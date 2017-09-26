@@ -299,10 +299,19 @@
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">$ hexo init</div></pre></td></tr></table></figure>
 <h2 id="安装依赖包"><a href="#安装依赖包" class="headerlink" title="安装依赖包"></a>安装依赖包</h2><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">$ npm install</div></pre></td></tr></table></figure>
 <h2 id="本地查看"><a href="#本地查看" class="headerlink" title="本地查看"></a>本地查看</h2><p>现在我们已经搭建起本地的hexo博客了，执行以下命令，然后到浏览器输入localhost:4000看看。</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">$ hexo generate</div><div class="line">$ hexo server</div></pre></td></tr></table></figure>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">$ hexo generate</div></pre></td></tr></table></figure>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">$ hexo server</div></pre></td></tr></table></figure>
 <h2 id="执行-hexo-deploy-后-出现-error-deployer-not-found-github-的错误"><a href="#执行-hexo-deploy-后-出现-error-deployer-not-found-github-的错误" class="headerlink" title="执行 hexo deploy 后,出现 error deployer not found:github 的错误"></a>执行 hexo deploy 后,出现 error deployer not found:github 的错误</h2><p>hexo 更新到3.0之后，deploy的type 的github需要改成git<br>repository路径: <a href="http://github.com/fuyuling/fuyuling.github.io.git" target="_blank" rel="external">http://github.com/fuyuling/fuyuling.github.io.git</a> （需要将https修改成http）还不行的话尝试<br>git@github.com:fuyuling/fuyuling.github.io.git路径<br>改了之后执行npm install hexo-deployer-git –save 安装hexo对于git的部署工具。</p>
 <p>然后再部署试试!</p>
 <p>这时候我们的博客已经部署到网上了，我们可以在浏览器地址输入栏输入我们的网址即可，如我的博客是：<a href="https://fuyuling.github.io/" target="_blank" rel="external">https://fuyuling.github.io/</a></p>
+<h2 id="安装theme"><a href="#安装theme" class="headerlink" title="安装theme"></a>安装theme</h2><p>你可以到Hexo官网主题页去搜寻自己喜欢的theme。这里以hexo-theme-next为例</p>
+<p>终端cd到 hexo 目录下执行如下命令：</p>
+<p>$ git clone <a href="https://github.com/iissnan/hexo-theme-next" target="_blank" rel="external">https://github.com/iissnan/hexo-theme-next</a> themes/next<br>将blog目录下_config.yml里theme的名称landscape修改为next</p>
+<p>终端cd到blog目录下执行如下命令(每次部署文章的步骤)：</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">$ hexo clean           //清除缓存文件 (db.json) 和已生成的静态文件 (public)</div></pre></td></tr></table></figure>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">$ hexo g             //生成缓存和静态文件</div></pre></td></tr></table></figure>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">$ hexo d             //重新部署到服务器</div></pre></td></tr></table></figure>
+<p>至于更改theme内容，比如名称，描述，头像等去修改blog/_config.yml文件和hexo/themes/next/_config.yml文件中对应的属性名称即可， 不要忘记冒号:后加空格。 NexT 使用文档里有极详细的介绍。</p>
 
           
         
