@@ -93,7 +93,8 @@
 <meta property="og:image" content="http://yoursite.com/2017/09/28/CSS-flex布局详解/flex_nowrap.png">
 <meta property="og:image" content="http://yoursite.com/2017/09/28/CSS-flex布局详解/flex_wrap.png">
 <meta property="og:image" content="http://yoursite.com/2017/09/28/CSS-flex布局详解/flex_wrap_reverse.png">
-<meta property="og:updated_time" content="2017-10-01T06:45:25.000Z">
+<meta property="og:image" content="http://yoursite.com/2017/09/28/CSS-flex布局详解/flex_basis.png">
+<meta property="og:updated_time" content="2017-10-01T06:58:39.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="CSS-flex布局详解">
 <meta name="twitter:description" content="Flex布局(Flexible Box, 弹性布局)的容器是一个伸缩容器，首先容器本身会更具容器中的元素动态设置自身大小；然后当Flex容器被应用一个大小时（width和height），将会自动调整容器中的元素适应新大小。Flex容器也可以设置伸缩比例和固定宽度，还可以设置容器中元素的排列方向（横向和纵向）和是否支持元素的自动换行。有了这个神器，做页面布局的可以方便很多了。注意，设为Flex布局以">
@@ -193,7 +194,7 @@
             
               <i class="menu-item-icon fa fa-fw fa-home"></i> <br />
             
-            Home
+            Startseite
           </a>
         </li>
       
@@ -203,7 +204,7 @@
             
               <i class="menu-item-icon fa fa-fw fa-archive"></i> <br />
             
-            Archives
+            Archiv
           </a>
         </li>
       
@@ -267,7 +268,7 @@
                 <i class="fa fa-calendar-o"></i>
               </span>
               
-                <span class="post-meta-item-text">Posted on</span>
+                <span class="post-meta-item-text">Veröffentlicht am</span>
               
               <time title="Post created" itemprop="dateCreated datePublished" datetime="2017-09-28T17:18:03+08:00">
                 2017-09-28
@@ -365,6 +366,12 @@
 <p>nowrap（默认）：不换行。<br><img src="/2017/09/28/CSS-flex布局详解/flex_nowrap.png" alt="flex_row"></p>
 <p><img src="/2017/09/28/CSS-flex布局详解/flex_wrap.png" alt="flex_row"></p>
 <p><img src="/2017/09/28/CSS-flex布局详解/flex_wrap_reverse.png" alt="flex_row"></p>
+<p>##flex-basis</p>
+<blockquote>
+<p>该属性来设置该元素的宽度。当然，width也可以用来设置元素宽度。如果元素上同时设置了width和flex-basis,那么flex-basis会覆盖width的值。</p>
+</blockquote>
+<p><img src="/2017/09/28/CSS-flex布局详解/flex_basis.png" alt="flex_row"></p>
+<p><code>CSS3 :nth-of-type() 选择器</code> #main div:nth-of-type(2) 表示父标签下的第二个div元素</p>
 
       
     </div>
@@ -461,10 +468,10 @@
       
         <ul class="sidebar-nav motion-element">
           <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap" >
-            Table of Contents
+            Inhaltsverzeichnis
           </li>
           <li class="sidebar-nav-overview" data-target="site-overview">
-            Overview
+            Übersicht
           </li>
         </ul>
       
@@ -484,7 +491,7 @@
               <a href="/archives/">
             
                 <span class="site-state-item-count">4</span>
-                <span class="site-state-item-name">posts</span>
+                <span class="site-state-item-name">Artikel</span>
               </a>
             </div>
           
@@ -497,7 +504,7 @@
             <div class="site-state-item site-state-tags">
               
                 <span class="site-state-item-count">8</span>
-                <span class="site-state-item-name">tags</span>
+                <span class="site-state-item-name">Tags</span>
               
             </div>
           
@@ -564,7 +571,7 @@
 </div>
 
 
-  <div class="powered-by">Powered by <a class="theme-link" href="https://hexo.io">Hexo</a></div>
+  <div class="powered-by">Erstellt mit  <a class="theme-link" href="https://hexo.io">Hexo</a></div>
 
   <span class="post-meta-divider">|</span>
 
