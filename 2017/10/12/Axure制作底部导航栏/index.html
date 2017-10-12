@@ -53,7 +53,7 @@
 <link href="/css/main.css?v=5.1.2" rel="stylesheet" type="text/css" />
 
 
-  <meta name="keywords" content="wechat, javascript, WXML,WXSS" />
+  <meta name="keywords" content="Axure, bottom, html5" />
 
 
 
@@ -69,20 +69,25 @@
 
 
 
-<meta name="description" content="微信小程序最近这么火,我想是时候了解一下它了.">
-<meta name="keywords" content="wechat, javascript, WXML,WXSS">
+<meta name="description" content="Axure RP是一个专业的快速原型设计工具。Axure（发音：Ack-sure），代表美国Axure公司；RP则是Rapid Prototyping（快速原型）的缩写。">
+<meta name="keywords" content="Axure, bottom, html5">
 <meta property="og:type" content="article">
-<meta property="og:title" content="微信小程序开发之入门">
-<meta property="og:url" content="http://yoursite.com/2017/09/27/微信小程序之开发入门/index.html">
+<meta property="og:title" content="Axure制作底部导航栏">
+<meta property="og:url" content="http://yoursite.com/2017/10/12/Axure制作底部导航栏/index.html">
 <meta property="og:site_name" content="Lynn&#39;s blogs">
-<meta property="og:description" content="微信小程序最近这么火,我想是时候了解一下它了.">
+<meta property="og:description" content="Axure RP是一个专业的快速原型设计工具。Axure（发音：Ack-sure），代表美国Axure公司；RP则是Rapid Prototyping（快速原型）的缩写。">
 <meta property="og:locale" content="zh-CN">
-<meta property="og:image" content="http://yoursite.com/2017/09/27/微信小程序之开发入门/content.jpg">
-<meta property="og:updated_time" content="2017-09-27T07:30:32.000Z">
+<meta property="og:image" content="http://yoursite.com/2017/10/12/Axure制作底部导航栏/DynanicPanel.png">
+<meta property="og:image" content="http://yoursite.com/2017/10/12/Axure制作底部导航栏/DynamicPanelStateManger.png">
+<meta property="og:image" content="http://yoursite.com/2017/10/12/Axure制作底部导航栏/SelectedGroup.png">
+<meta property="og:image" content="http://yoursite.com/2017/10/12/Axure制作底部导航栏/SelectedStyles.png">
+<meta property="og:image" content="http://yoursite.com/2017/10/12/Axure制作底部导航栏/CaseEditer.png">
+<meta property="og:image" content="http://yoursite.com/2017/10/12/Axure制作底部导航栏/CaseEditer.png_1.png">
+<meta property="og:updated_time" content="2017-10-12T09:31:06.000Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="微信小程序开发之入门">
-<meta name="twitter:description" content="微信小程序最近这么火,我想是时候了解一下它了.">
-<meta name="twitter:image" content="http://yoursite.com/2017/09/27/微信小程序之开发入门/content.jpg">
+<meta name="twitter:title" content="Axure制作底部导航栏">
+<meta name="twitter:description" content="Axure RP是一个专业的快速原型设计工具。Axure（发音：Ack-sure），代表美国Axure公司；RP则是Rapid Prototyping（快速原型）的缩写。">
+<meta name="twitter:image" content="http://yoursite.com/2017/10/12/Axure制作底部导航栏/DynanicPanel.png">
 
 
 
@@ -112,13 +117,13 @@
 
 
 
-  <link rel="canonical" href="http://yoursite.com/2017/09/27/微信小程序之开发入门/"/>
+  <link rel="canonical" href="http://yoursite.com/2017/10/12/Axure制作底部导航栏/"/>
 
 
 
 
 
-  <title>微信小程序开发之入门 | Lynn's blogs</title>
+  <title>Axure制作底部导航栏 | Lynn's blogs</title>
   
 
 
@@ -225,7 +230,7 @@
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2017/09/27/微信小程序之开发入门/">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2017/10/12/Axure制作底部导航栏/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="Lynn Fu">
@@ -242,7 +247,7 @@
 
         
         
-          <h1 class="post-title" itemprop="name headline">微信小程序开发之入门</h1>
+          <h1 class="post-title" itemprop="name headline">Axure制作底部导航栏</h1>
         
 
         <div class="post-meta">
@@ -254,8 +259,8 @@
               
                 <span class="post-meta-item-text">Veröffentlicht am</span>
               
-              <time title="Post created" itemprop="dateCreated datePublished" datetime="2017-09-27T10:52:24+08:00">
-                2017-09-27
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2017-10-12T17:12:03+08:00">
+                2017-10-12
               </time>
             
 
@@ -279,7 +284,7 @@
 
           
               <div class="post-description">
-                  微信小程序最近这么火,我想是时候了解一下它了.
+                  Axure RP是一个专业的快速原型设计工具。Axure（发音：Ack-sure），代表美国Axure公司；RP则是Rapid Prototyping（快速原型）的缩写。
               </div>
           
 
@@ -296,7 +301,17 @@
       
 
       
-        <p>小程序使用的微信自己开发MINA框架(基于TCP/IP,UDP/IP协议栈的通信框架),提供了视图层描述语言，WXML 和 WXSS 以及基于JavaScript的逻辑层框架，并在视图层与逻辑层间提供了数据传输和事件系统，可以让开发者可以方便的聚焦于数据与逻辑上。通俗说就是双向绑定,开发过程中只需要关注view和app service.<br><img src="/2017/09/27/微信小程序之开发入门/content.jpg" alt="小程序目录结构"></p>
+        <h2 id="用到控件：一个动态面板，两个button控件；"><a href="#用到控件：一个动态面板，两个button控件；" class="headerlink" title="用到控件：一个动态面板，两个button控件；"></a>用到控件：一个动态面板，两个button控件；</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line">大概原理：（主要是动态面板的使用）</div><div class="line">1、为两个button控件设置相同的selected显示样式（逐个添加），同时设置相同的selection group 名字；</div><div class="line">2、点击时，赋予被点击控件selected属性，控件会显示其相应样式；</div><div class="line">3、点击两个不同的button，显示其对应的动态子面板；</div></pre></td></tr></table></figure>
+<blockquote>
+<p>将动态面板拖至合适处，双击显示下面对话框：<br><img src="/2017/10/12/Axure制作底部导航栏/DynanicPanel.png" alt="Axure制作底部导航栏"></p>
+<p>添加子panel（实例中：index,mine）<br><img src="/2017/10/12/Axure制作底部导航栏/DynamicPanelStateManger.png" alt="Axure制作底部导航栏"></p>
+<p>制作底部menu</p>
+</blockquote>
+<p>拖拽两个button控件设置相同的宽高属性，设置为一组控件.<br><img src="/2017/10/12/Axure制作底部导航栏/SelectedGroup.png" alt="Axure制作底部导航栏"></p>
+<p>为每一个button设置Selected style.<br><img src="/2017/10/12/Axure制作底部导航栏/SelectedStyles.png" alt="Axure制作底部导航栏"></p>
+<p>Add Cases,设置selected对应的子面板：</p>
+<p><img src="/2017/10/12/Axure制作底部导航栏/CaseEditer.png" alt="Axure制作底部导航栏"></p>
+<p><img src="/2017/10/12/Axure制作底部导航栏/CaseEditer.png_1.png" alt="Axure制作底部导航栏"></p>
 
       
     </div>
@@ -314,9 +329,11 @@
       
         <div class="post-tags">
           
-            <a href="/tags/微信小程序/" rel="tag"># 微信小程序</a>
+            <a href="/tags/flex/" rel="tag"># flex</a>
           
-            <a href="/tags/js/" rel="tag"># js</a>
+            <a href="/tags/css/" rel="tag"># css</a>
+          
+            <a href="/tags/html5/" rel="tag"># html5</a>
           
         </div>
       
@@ -329,8 +346,8 @@
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
-              <a href="/2017/09/27/APP技术分析/" rel="next" title="APP技术分析">
-                <i class="fa fa-chevron-left"></i> APP技术分析
+              <a href="/2017/09/28/CSS-flex布局详解/" rel="next" title="CSS-flex布局详解">
+                <i class="fa fa-chevron-left"></i> CSS-flex布局详解
               </a>
             
           </div>
@@ -338,10 +355,6 @@
           <span class="post-nav-divider"></span>
 
           <div class="post-nav-prev post-nav-item">
-            
-              <a href="/2017/09/28/CSS-flex布局详解/" rel="prev" title="CSS-flex布局详解">
-                CSS-flex布局详解 <i class="fa fa-chevron-right"></i>
-              </a>
             
           </div>
         </div>
@@ -393,8 +406,17 @@
       
 
       
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap" >
+            Inhaltsverzeichnis
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview">
+            Übersicht
+          </li>
+        </ul>
+      
 
-      <section class="site-overview sidebar-panel sidebar-panel-active">
+      <section class="site-overview sidebar-panel">
         <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
           
             <p class="site-author-name" itemprop="name">Lynn Fu</p>
@@ -446,6 +468,22 @@
 
       </section>
 
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#用到控件：一个动态面板，两个button控件；"><span class="nav-number">1.</span> <span class="nav-text">用到控件：一个动态面板，两个button控件；</span></a></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
       
 
       
