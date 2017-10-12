@@ -53,7 +53,7 @@
 <link href="/css/main.css?v=5.1.2" rel="stylesheet" type="text/css" />
 
 
-  <meta name="keywords" content="Axure, bottom, html5" />
+  <meta name="keywords" content="Axure, BottomNavigationBar, app" />
 
 
 
@@ -69,13 +69,13 @@
 
 
 
-<meta name="description" content="Axure RP是一个专业的快速原型设计工具。Axure（发音：Ack-sure），代表美国Axure公司；RP则是Rapid Prototyping（快速原型）的缩写。">
-<meta name="keywords" content="Axure, bottom, html5">
+<meta name="description" content="据说这是做app必备工具,互联网公司的产品经理就是靠这个神工具叨逼叨逼RD们好好干活. 安装好后随意上手捣鼓了一下,貌似很easy的样子,便随手做个BottomNavigationBar... Axure RP是一个专业的快速原型设计工具。Axure（发音：Ack-sure），代表美国Axure公司；RP则是Rapid Prototyping（快速原型）的缩写。">
+<meta name="keywords" content="Axure, BottomNavigationBar, app">
 <meta property="og:type" content="article">
 <meta property="og:title" content="Axure制作底部导航栏">
 <meta property="og:url" content="http://yoursite.com/2017/10/12/Axure制作底部导航栏/index.html">
 <meta property="og:site_name" content="Lynn&#39;s blogs">
-<meta property="og:description" content="Axure RP是一个专业的快速原型设计工具。Axure（发音：Ack-sure），代表美国Axure公司；RP则是Rapid Prototyping（快速原型）的缩写。">
+<meta property="og:description" content="据说这是做app必备工具,互联网公司的产品经理就是靠这个神工具叨逼叨逼RD们好好干活. 安装好后随意上手捣鼓了一下,貌似很easy的样子,便随手做个BottomNavigationBar... Axure RP是一个专业的快速原型设计工具。Axure（发音：Ack-sure），代表美国Axure公司；RP则是Rapid Prototyping（快速原型）的缩写。">
 <meta property="og:locale" content="zh-CN">
 <meta property="og:image" content="http://yoursite.com/2017/10/12/Axure制作底部导航栏/DynanicPanel.png">
 <meta property="og:image" content="http://yoursite.com/2017/10/12/Axure制作底部导航栏/DynamicPanelStateManger.png">
@@ -83,10 +83,10 @@
 <meta property="og:image" content="http://yoursite.com/2017/10/12/Axure制作底部导航栏/SelectedStyles.png">
 <meta property="og:image" content="http://yoursite.com/2017/10/12/Axure制作底部导航栏/CaseEditer.png">
 <meta property="og:image" content="http://yoursite.com/2017/10/12/Axure制作底部导航栏/CaseEditer.png_1.png">
-<meta property="og:updated_time" content="2017-10-12T09:31:06.000Z">
+<meta property="og:updated_time" content="2017-10-12T09:52:12.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Axure制作底部导航栏">
-<meta name="twitter:description" content="Axure RP是一个专业的快速原型设计工具。Axure（发音：Ack-sure），代表美国Axure公司；RP则是Rapid Prototyping（快速原型）的缩写。">
+<meta name="twitter:description" content="据说这是做app必备工具,互联网公司的产品经理就是靠这个神工具叨逼叨逼RD们好好干活. 安装好后随意上手捣鼓了一下,貌似很easy的样子,便随手做个BottomNavigationBar... Axure RP是一个专业的快速原型设计工具。Axure（发音：Ack-sure），代表美国Axure公司；RP则是Rapid Prototyping（快速原型）的缩写。">
 <meta name="twitter:image" content="http://yoursite.com/2017/10/12/Axure制作底部导航栏/DynanicPanel.png">
 
 
@@ -284,7 +284,7 @@
 
           
               <div class="post-description">
-                  Axure RP是一个专业的快速原型设计工具。Axure（发音：Ack-sure），代表美国Axure公司；RP则是Rapid Prototyping（快速原型）的缩写。
+                  据说这是做app必备工具,互联网公司的产品经理就是靠这个神工具叨逼叨逼RD们好好干活. 安装好后随意上手捣鼓了一下,貌似很easy的样子,便随手做个BottomNavigationBar... Axure RP是一个专业的快速原型设计工具。Axure（发音：Ack-sure），代表美国Axure公司；RP则是Rapid Prototyping（快速原型）的缩写。
               </div>
           
 
@@ -301,14 +301,19 @@
       
 
       
-        <h2 id="用到控件：一个动态面板，两个button控件；"><a href="#用到控件：一个动态面板，两个button控件；" class="headerlink" title="用到控件：一个动态面板，两个button控件；"></a>用到控件：一个动态面板，两个button控件；</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line">大概原理：（主要是动态面板的使用）</div><div class="line">1、为两个button控件设置相同的selected显示样式（逐个添加），同时设置相同的selection group 名字；</div><div class="line">2、点击时，赋予被点击控件selected属性，控件会显示其相应样式；</div><div class="line">3、点击两个不同的button，显示其对应的动态子面板；</div></pre></td></tr></table></figure>
-<blockquote>
-<p>将动态面板拖至合适处，双击显示下面对话框：<br><img src="/2017/10/12/Axure制作底部导航栏/DynanicPanel.png" alt="Axure制作底部导航栏"></p>
-<p>添加子panel（实例中：index,mine）<br><img src="/2017/10/12/Axure制作底部导航栏/DynamicPanelStateManger.png" alt="Axure制作底部导航栏"></p>
-<p>制作底部menu</p>
+        <h2 id="用到控件：一个动态面板，两个button控件；"><a href="#用到控件：一个动态面板，两个button控件；" class="headerlink" title="用到控件：一个动态面板，两个button控件；"></a>用到控件：一个动态面板，两个button控件；</h2><blockquote>
+<p>大概原理：（主要是动态面板的使用）</p>
 </blockquote>
-<p>拖拽两个button控件设置相同的宽高属性，设置为一组控件.<br><img src="/2017/10/12/Axure制作底部导航栏/SelectedGroup.png" alt="Axure制作底部导航栏"></p>
-<p>为每一个button设置Selected style.<br><img src="/2017/10/12/Axure制作底部导航栏/SelectedStyles.png" alt="Axure制作底部导航栏"></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">为两个button控件设置相同的selected显示样式（逐个添加），同时设置相同的selection group 名字；</div><div class="line">点击时，赋予被点击控件selected属性，控件会显示其相应样式；</div><div class="line">点击两个不同的button，显示其对应的动态子面板；</div></pre></td></tr></table></figure>
+<p>将动态面板拖至合适处，双击显示下面对话框：</p>
+<p><img src="/2017/10/12/Axure制作底部导航栏/DynanicPanel.png" alt="Axure制作底部导航栏"></p>
+<p>添加子panel（实例中：index,mine）</p>
+<p><img src="/2017/10/12/Axure制作底部导航栏/DynamicPanelStateManger.png" alt="Axure制作底部导航栏"></p>
+<p>制作底部menu</p>
+<p>拖拽两个button控件设置相同的宽高属性，设置为一组控件.</p>
+<p><img src="/2017/10/12/Axure制作底部导航栏/SelectedGroup.png" alt="Axure制作底部导航栏"></p>
+<p>为每一个button设置Selected style.</p>
+<p><img src="/2017/10/12/Axure制作底部导航栏/SelectedStyles.png" alt="Axure制作底部导航栏"></p>
 <p>Add Cases,设置selected对应的子面板：</p>
 <p><img src="/2017/10/12/Axure制作底部导航栏/CaseEditer.png" alt="Axure制作底部导航栏"></p>
 <p><img src="/2017/10/12/Axure制作底部导航栏/CaseEditer.png_1.png" alt="Axure制作底部导航栏"></p>
@@ -329,11 +334,11 @@
       
         <div class="post-tags">
           
-            <a href="/tags/flex/" rel="tag"># flex</a>
+            <a href="/tags/Axure/" rel="tag"># Axure</a>
           
-            <a href="/tags/css/" rel="tag"># css</a>
+            <a href="/tags/BottomNavigationBar/" rel="tag"># BottomNavigationBar</a>
           
-            <a href="/tags/html5/" rel="tag"># html5</a>
+            <a href="/tags/app/" rel="tag"># app</a>
           
         </div>
       
@@ -443,7 +448,7 @@
             
             <div class="site-state-item site-state-tags">
               
-                <span class="site-state-item-count">8</span>
+                <span class="site-state-item-count">11</span>
                 <span class="site-state-item-name">Tags</span>
               
             </div>
