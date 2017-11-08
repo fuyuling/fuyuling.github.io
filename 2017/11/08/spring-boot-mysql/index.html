@@ -53,7 +53,7 @@
 <link href="/css/main.css?v=5.1.2" rel="stylesheet" type="text/css" />
 
 
-  <meta name="keywords" content="Hexo, NexT" />
+  <meta name="keywords" content="Java, spring boot, mysql, IntelliJ IDEA, JDBC, web, maven, navicat premuim," />
 
 
 
@@ -69,20 +69,23 @@
 
 
 
-<meta name="description" content="mac安装mysql 使用安装包安装mysql, 记得保存最后弹出框中的密码（它是你mysql root账号的密码）    安装成功后, 进入系统偏好设置    添加环境变量  123vim .bash_profileexport PATH=$&amp;#123;PATH&amp;#125;:/usr/local/mysql/binsource .bash_profile  修改密码  1234mysql -u">
+<meta name="description" content="像我这种大学学通信,工作做前端的人来说,对后台服务器简直是一无所知. 因为对java比较熟, 所以选用简易上手的java技术栈, spring boot+mysql.关键是不需要配各种xml.">
+<meta name="keywords" content="Java, spring boot, mysql, IntelliJ IDEA, JDBC, web, maven, navicat premuim">
 <meta property="og:type" content="article">
-<meta property="og:title" content="MYSQL">
-<meta property="og:url" content="http://yoursite.com/2017/11/06/MYSQL/index.html">
+<meta property="og:title" content="spring boot+mysql">
+<meta property="og:url" content="http://yoursite.com/2017/11/08/spring-boot-mysql/index.html">
 <meta property="og:site_name" content="Lynn&#39;s blogs">
-<meta property="og:description" content="mac安装mysql 使用安装包安装mysql, 记得保存最后弹出框中的密码（它是你mysql root账号的密码）    安装成功后, 进入系统偏好设置    添加环境变量  123vim .bash_profileexport PATH=$&amp;#123;PATH&amp;#125;:/usr/local/mysql/binsource .bash_profile  修改密码  1234mysql -u">
+<meta property="og:description" content="像我这种大学学通信,工作做前端的人来说,对后台服务器简直是一无所知. 因为对java比较熟, 所以选用简易上手的java技术栈, spring boot+mysql.关键是不需要配各种xml.">
 <meta property="og:locale" content="zh-CN">
-<meta property="og:image" content="http://yoursite.com/2017/11/06/MYSQL/mysql_install.png">
-<meta property="og:image" content="http://yoursite.com/2017/11/06/MYSQL/mysql_running.png">
-<meta property="og:updated_time" content="2017-11-06T06:28:01.000Z">
+<meta property="og:image" content="http://yoursite.com/2017/11/08/spring-boot-mysql/maven_compile.png">
+<meta property="og:image" content="http://yoursite.com/2017/11/08/spring-boot-mysql/oschina.png">
+<meta property="og:image" content="http://yoursite.com/2017/11/08/spring-boot-mysql/setting.xml.png">
+<meta property="og:image" content="http://yoursite.com/2017/11/08/spring-boot-mysql/mysql.png">
+<meta property="og:updated_time" content="2017-11-08T06:10:17.000Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="MYSQL">
-<meta name="twitter:description" content="mac安装mysql 使用安装包安装mysql, 记得保存最后弹出框中的密码（它是你mysql root账号的密码）    安装成功后, 进入系统偏好设置    添加环境变量  123vim .bash_profileexport PATH=$&amp;#123;PATH&amp;#125;:/usr/local/mysql/binsource .bash_profile  修改密码  1234mysql -u">
-<meta name="twitter:image" content="http://yoursite.com/2017/11/06/MYSQL/mysql_install.png">
+<meta name="twitter:title" content="spring boot+mysql">
+<meta name="twitter:description" content="像我这种大学学通信,工作做前端的人来说,对后台服务器简直是一无所知. 因为对java比较熟, 所以选用简易上手的java技术栈, spring boot+mysql.关键是不需要配各种xml.">
+<meta name="twitter:image" content="http://yoursite.com/2017/11/08/spring-boot-mysql/maven_compile.png">
 
 
 
@@ -112,13 +115,13 @@
 
 
 
-  <link rel="canonical" href="http://yoursite.com/2017/11/06/MYSQL/"/>
+  <link rel="canonical" href="http://yoursite.com/2017/11/08/spring-boot-mysql/"/>
 
 
 
 
 
-  <title>MYSQL | Lynn's blogs</title>
+  <title>spring boot+mysql | Lynn's blogs</title>
   
 
 
@@ -225,7 +228,7 @@
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2017/11/06/MYSQL/">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2017/11/08/spring-boot-mysql/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="Lynn Fu">
@@ -242,7 +245,7 @@
 
         
         
-          <h1 class="post-title" itemprop="name headline">MYSQL</h1>
+          <h1 class="post-title" itemprop="name headline">spring boot+mysql</h1>
         
 
         <div class="post-meta">
@@ -254,8 +257,8 @@
               
                 <span class="post-meta-item-text">Veröffentlicht am</span>
               
-              <time title="Post created" itemprop="dateCreated datePublished" datetime="2017-11-06T14:07:16+08:00">
-                2017-11-06
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2017-11-08T10:27:38+08:00">
+                2017-11-08
               </time>
             
 
@@ -278,6 +281,10 @@
           
 
           
+              <div class="post-description">
+                  像我这种大学学通信,工作做前端的人来说,对后台服务器简直是一无所知. 因为对java比较熟, 所以选用简易上手的java技术栈, spring boot+mysql.关键是不需要配各种xml.
+              </div>
+          
 
         </div>
       </header>
@@ -292,35 +299,53 @@
       
 
       
-        <h2 id="mac安装mysql"><a href="#mac安装mysql" class="headerlink" title="mac安装mysql"></a>mac安装mysql</h2><blockquote>
-<p>使用安装包安装mysql, 记得保存最后弹出框中的密码（它是你mysql root账号的密码）</p>
+        <h2 id="Spring-boot自述"><a href="#Spring-boot自述" class="headerlink" title="Spring boot自述"></a>Spring boot自述</h2><blockquote>
+<p>来自官方《Spring Boot Reference Guide》<br>Spring Boot makes it easy to create stand-alone, production-grade Spring based Applications that you can “just run”. We take an opinionated view of the Spring platform and third-party libraries so you can get started with minimum fuss. Most Spring Boot applications need very little Spring configuration.</p>
 </blockquote>
-<p><img src="/2017/11/06/MYSQL/mysql_install.png" alt="install"></p>
-<blockquote>
-<p>安装成功后, 进入系统偏好设置</p>
+<p><code>Features</code></p>
+<ul>
+<li>Create stand-alone Spring applications</li>
+<li>Embed Tomcat, Jetty or Undertow directly (no need to deploy WAR files)</li>
+<li>Provide opinionated ‘starter’ POMs to simplify your Maven configuration</li>
+<li>Automatically configure Spring whenever possible</li>
+<li>Provide production-ready features such as metrics, health checks and externalized configuration</li>
+<li>Absolutely no code generation and no requirement for XML configuration</li>
+</ul>
+<p>Spring Boot(英文中是“引导”的意思)，是用来简化Spring应用的搭建到开发的过程。应用开箱即用，只要通过 “just run”（可能是 java -jar 或 tomcat 或 maven插件run 或 shell脚本），就可以启动项目。二者，Spring Boot 只要很少的Spring配置文件（例如那些xml，property）。</p>
+<p>因为“习惯优先于配置”的原则，使得Spring Boot在快速开发应用和微服务架构实践中得到广泛应用。</p>
+<h2 id="maven-spring-boot-IntelliJ-IDEA搭建web项目"><a href="#maven-spring-boot-IntelliJ-IDEA搭建web项目" class="headerlink" title="maven + spring boot + IntelliJ IDEA搭建web项目"></a>maven + spring boot + IntelliJ IDEA搭建web项目</h2><p>启动intellij IDEA后, 按照默认步骤create new project, pom.xml报错,命令行输入mvn compile报错如下.<br><img src="/2017/11/08/spring-boot-mysql/maven_compile.png" alt="maven"><br>遇到oschina镜像连接不上<br><img src="/2017/11/08/spring-boot-mysql/oschina.png" alt="oschina"><br>修改maven的setting,添加如下<br><img src="/2017/11/08/spring-boot-mysql/setting.xml.png" alt="setting"></p>
+<pre><code class="xml"><span class="tag">&lt;<span class="name">mirror</span>&gt;</span>
+<span class="tag">&lt;<span class="name">id</span>&gt;</span>alimaven<span class="tag">&lt;/<span class="name">id</span>&gt;</span>
+<span class="tag">&lt;<span class="name">name</span>&gt;</span>aliyun maven<span class="tag">&lt;/<span class="name">name</span>&gt;</span>
+<span class="tag">&lt;<span class="name">url</span>&gt;</span>http://maven.aliyun.com/nexus/content/groups/public/<span class="tag">&lt;/<span class="name">url</span>&gt;</span>
+<span class="tag">&lt;<span class="name">mirrorOf</span>&gt;</span>central<span class="tag">&lt;/<span class="name">mirrorOf</span>&gt;</span>
+<span class="tag">&lt;/<span class="name">mirror</span>&gt;</span>
+<span class="tag">&lt;<span class="name">mirror</span>&gt;</span>
+<span class="tag">&lt;<span class="name">id</span>&gt;</span>CN<span class="tag">&lt;/<span class="name">id</span>&gt;</span>
+<span class="tag">&lt;<span class="name">name</span>&gt;</span>OSChina Central<span class="tag">&lt;/<span class="name">name</span>&gt;</span>
+<span class="tag">&lt;<span class="name">url</span>&gt;</span>http://maven.oschina.net/content/groups/public/<span class="tag">&lt;/<span class="name">url</span>&gt;</span>
+<span class="tag">&lt;<span class="name">mirrorOf</span>&gt;</span>central<span class="tag">&lt;/<span class="name">mirrorOf</span>&gt;</span>
+<span class="tag">&lt;/<span class="name">mirror</span>&gt;</span>
+<span class="tag">&lt;/<span class="name">mirrors</span>&gt;</span>
+</code></pre>
+<h2 id="简单的小demo"><a href="#简单的小demo" class="headerlink" title="简单的小demo"></a>简单的小demo</h2><pre><code class="java"><span class="meta">@SpringBootApplication</span>(exclude={DataSourceAutoConfiguration.class,HibernateJpaAutoConfiguration.class}) <span class="comment">//移除自动注入数据源</span>
+<span class="meta">@RestController</span>  <span class="comment">// 添加了一个注解</span>
+<span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">DemoApplication</span> </span>{
+
+<span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">main</span><span class="params">(String[] args)</span> </span>{
+SpringApplication.run(DemoApplication.class, args);
+}
+<span class="comment">//添加了一个方法</span>
+<span class="meta">@RequestMapping</span>(<span class="string">"/hello"</span>)
+<span class="function"><span class="keyword">public</span> String <span class="title">hello</span><span class="params">()</span></span>{
+<span class="keyword">return</span> <span class="string">"no hello world"</span>;
+}
+}
+</code></pre>
+<h2 id="连接MySQL"><a href="#连接MySQL" class="headerlink" title="连接MySQL"></a>连接MySQL</h2><blockquote>
+<p>navicat premuim<br>此工具连接数据库，你可以从中看到各种数据库的详细信息。很方便,比命令行简便多了…</p>
 </blockquote>
-<p><img src="/2017/11/06/MYSQL/mysql_running.png" alt="install"></p>
-<blockquote>
-<p>添加环境变量</p>
-</blockquote>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">vim .bash_profile</div><div class="line">export PATH=$&#123;PATH&#125;:/usr/local/mysql/bin</div><div class="line">source .bash_profile</div></pre></td></tr></table></figure>
-<blockquote>
-<p>修改密码</p>
-</blockquote>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line">mysql -u root</div><div class="line">UPDATE mysql.user SET authentication_string=PASSWORD(&apos;*****&apos;) WHERE User=&apos;root&apos;;</div><div class="line">FLUSH PRIVILEGES;</div><div class="line">\q</div></pre></td></tr></table></figure>
-<blockquote>
-<p>登陆到MySQL</p>
-</blockquote>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">(mysql -u root -p)</div></pre></td></tr></table></figure>
-<p>mysql -h 主机名 -u 用户名 -p<br>-h : 该命令用于指定客户端所要登录的MySQL主机名, 登录当前机器该参数可以省略;<br>-u : 所要登录的用户名;<br>-p : 告诉服务器将会使用一个密码来登录, 如果所要登录的用户名密码为空, 可以忽略此选项。</p>
-<p>详细的解释如下：</p>
-<p>前面我们在-h后面填写了localhost，表示的是要登陆到当前主机的MySQL数据库，在这种情况下，-h参数以及localhost完全可以省略，也就是说，使用下面的命令也是可以登陆到本机的MySQL数据库的：</p>
-<p>mysql -u root -p</p>
-<p>当然，如果你真的要连接到远程主机的MySQL数据库的话，只需要在加上-h参数，再加上远程主机的主机名或者IP地址就可以了，类似如下：</p>
-<p>mysql -h 202.116.96.96 -u root -p</p>
-<p>对于-p参数，其实我们也可以在p后面直接加上MySQL数据库的密码，也就是说，上面的操作也等价于下面：</p>
-<p>mysql -u root -p123456</p>
-<p>这里，我的密码是123456，这样之后，按回车键，就可以直接登陆到MySQL数据库中去了。</p>
+<p><img src="/2017/11/08/spring-boot-mysql/mysql.png" alt="mysql"></p>
 
       
     </div>
@@ -336,6 +361,12 @@
 
     <footer class="post-footer">
       
+        <div class="post-tags">
+          
+            <a href="/tags/Java-spring-boot-mysql-IntelliJ-IDEA-JDBC-web-maven-navicat-premuim/" rel="tag"># Java, spring boot, mysql, IntelliJ IDEA, JDBC, web, maven, navicat premuim</a>
+          
+        </div>
+      
 
       
       
@@ -345,8 +376,8 @@
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
-              <a href="/2017/10/19/Tech-stacks看看顶级互联网公司都使用了哪些技术和工具/" rel="next" title="Tech stacks">
-                <i class="fa fa-chevron-left"></i> Tech stacks
+              <a href="/2017/11/06/MYSQL/" rel="next" title="MYSQL">
+                <i class="fa fa-chevron-left"></i> MYSQL
               </a>
             
           </div>
@@ -354,10 +385,6 @@
           <span class="post-nav-divider"></span>
 
           <div class="post-nav-prev post-nav-item">
-            
-              <a href="/2017/11/08/spring-boot-mysql/" rel="prev" title="spring boot+mysql">
-                spring boot+mysql <i class="fa fa-chevron-right"></i>
-              </a>
             
           </div>
         </div>
@@ -481,7 +508,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#mac安装mysql"><span class="nav-number">1.</span> <span class="nav-text">mac安装mysql</span></a></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#Spring-boot自述"><span class="nav-number">1.</span> <span class="nav-text">Spring boot自述</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#maven-spring-boot-IntelliJ-IDEA搭建web项目"><span class="nav-number">2.</span> <span class="nav-text">maven + spring boot + IntelliJ IDEA搭建web项目</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#简单的小demo"><span class="nav-number">3.</span> <span class="nav-text">简单的小demo</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#连接MySQL"><span class="nav-number">4.</span> <span class="nav-text">连接MySQL</span></a></li></ol></div>
             
 
           </div>
