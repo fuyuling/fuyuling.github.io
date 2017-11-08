@@ -72,7 +72,7 @@
 <meta name="description" content="像我这种大学学通信,工作做前端的人来说,对后台服务器简直是一无所知. 因为对java比较熟, 所以选用简易上手的java技术栈, spring boot+mysql.关键是不需要配各种xml.">
 <meta name="keywords" content="Java, spring boot, mysql, IntelliJ IDEA, JDBC, web, maven, navicat premuim">
 <meta property="og:type" content="article">
-<meta property="og:title" content="spring boot+mysql">
+<meta property="og:title" content="Spring boot + MySQL">
 <meta property="og:url" content="http://yoursite.com/2017/11/08/spring-boot-mysql/index.html">
 <meta property="og:site_name" content="Lynn&#39;s blogs">
 <meta property="og:description" content="像我这种大学学通信,工作做前端的人来说,对后台服务器简直是一无所知. 因为对java比较熟, 所以选用简易上手的java技术栈, spring boot+mysql.关键是不需要配各种xml.">
@@ -81,9 +81,11 @@
 <meta property="og:image" content="http://yoursite.com/2017/11/08/spring-boot-mysql/oschina.png">
 <meta property="og:image" content="http://yoursite.com/2017/11/08/spring-boot-mysql/setting.xml.png">
 <meta property="og:image" content="http://yoursite.com/2017/11/08/spring-boot-mysql/mysql.png">
-<meta property="og:updated_time" content="2017-11-08T06:10:17.000Z">
+<meta property="og:image" content="http://yoursite.com/2017/11/08/spring-boot-mysql/hello.png">
+<meta property="og:image" content="http://yoursite.com/2017/11/08/spring-boot-mysql/user_list.png">
+<meta property="og:updated_time" content="2017-11-08T08:54:18.000Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="spring boot+mysql">
+<meta name="twitter:title" content="Spring boot + MySQL">
 <meta name="twitter:description" content="像我这种大学学通信,工作做前端的人来说,对后台服务器简直是一无所知. 因为对java比较熟, 所以选用简易上手的java技术栈, spring boot+mysql.关键是不需要配各种xml.">
 <meta name="twitter:image" content="http://yoursite.com/2017/11/08/spring-boot-mysql/maven_compile.png">
 
@@ -121,7 +123,7 @@
 
 
 
-  <title>spring boot+mysql | Lynn's blogs</title>
+  <title>Spring boot + MySQL | Lynn's blogs</title>
   
 
 
@@ -245,7 +247,7 @@
 
         
         
-          <h1 class="post-title" itemprop="name headline">spring boot+mysql</h1>
+          <h1 class="post-title" itemprop="name headline">Spring boot + MySQL</h1>
         
 
         <div class="post-meta">
@@ -328,24 +330,65 @@
 <span class="tag">&lt;/<span class="name">mirror</span>&gt;</span>
 <span class="tag">&lt;/<span class="name">mirrors</span>&gt;</span>
 </code></pre>
-<h2 id="简单的小demo"><a href="#简单的小demo" class="headerlink" title="简单的小demo"></a>简单的小demo</h2><pre><code class="java"><span class="meta">@SpringBootApplication</span>(exclude={DataSourceAutoConfiguration.class,HibernateJpaAutoConfiguration.class}) <span class="comment">//移除自动注入数据源</span>
-<span class="meta">@RestController</span>  <span class="comment">// 添加了一个注解</span>
-<span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">DemoApplication</span> </span>{
+<h2 id="简单的小demo"><a href="#简单的小demo" class="headerlink" title="简单的小demo"></a>简单的小demo</h2><p>Application很简单，一个main函数作为主入口。SpringApplication引导应用，并将Application本身作为参数传递给run方法。具体run方法会启动嵌入式的Tomcat并初始化Spring环境及其各Spring组件。</p>
+<pre><code class="java"><span class="keyword">package</span> com.example.demomysql;
 
-<span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">main</span><span class="params">(String[] args)</span> </span>{
-SpringApplication.run(DemoApplication.class, args);
-}
-<span class="comment">//添加了一个方法</span>
+<span class="keyword">import</span> org.springframework.beans.factory.annotation.Autowired;
+<span class="keyword">import</span> org.springframework.jdbc.core.JdbcTemplate;
+<span class="keyword">import</span> org.springframework.stereotype.Controller;
+<span class="keyword">import</span> org.springframework.web.bind.annotation.RequestMapping;
+<span class="keyword">import</span> org.springframework.web.bind.annotation.RestController;
+
+<span class="meta">@RestController</span>
+<span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">HelloController</span> </span>{
+
+<span class="comment">/**</span>
+<span class="comment">* 配置<span class="doctag">@RequestMapping</span> 拦截 localhost:8080/springmvc/hello 请求</span>
+<span class="comment">* <span class="doctag">@return</span></span>
+<span class="comment">*/</span>
 <span class="meta">@RequestMapping</span>(<span class="string">"/hello"</span>)
-<span class="function"><span class="keyword">public</span> String <span class="title">hello</span><span class="params">()</span></span>{
-<span class="keyword">return</span> <span class="string">"no hello world"</span>;
+<span class="function"><span class="keyword">public</span> String <span class="title">helloWorld</span><span class="params">()</span> </span>{
+System.out.println(<span class="string">"hello world"</span>);
+<span class="keyword">return</span> <span class="string">"helloworld"</span>;
 }
 }
 </code></pre>
-<h2 id="连接MySQL"><a href="#连接MySQL" class="headerlink" title="连接MySQL"></a>连接MySQL</h2><blockquote>
+<p>@RestController：提供实现了REST API，可以服务JSON,XML或者其他。这里是以String的形式渲染出结果。<br>@RequestMapping：提供路由信息，”/“路径的HTTP Request都会被映射到sayHello方法进行处理。</p>
+<h2 id="使用Jdbc连接MySQL"><a href="#使用Jdbc连接MySQL" class="headerlink" title="使用Jdbc连接MySQL"></a>使用Jdbc连接MySQL</h2><blockquote>
 <p>navicat premuim<br>此工具连接数据库，你可以从中看到各种数据库的详细信息。很方便,比命令行简便多了…</p>
 </blockquote>
 <p><img src="/2017/11/08/spring-boot-mysql/mysql.png" alt="mysql"></p>
+<p>在resource文件夹下添加application.properties配置文件并输入数据库参数，如下：</p>
+<pre><code>spring.datasource.url=jdbc:mysql://127.0.0.1:3306/user_info
+spring.datasource.username=root
+spring.datasource.password=123456
+spring.datasource.driver-class-name=com.mysql.jdbc.Driver
+spring.datasource.max-idle=10
+spring.datasource.max-wait=10000
+spring.datasource.min-idle=5
+spring.datasource.initial-size=5
+</code></pre><p><img src="/2017/11/08/spring-boot-mysql/hello.png" alt="maven"></p>
+<p>新建usercontroller类测试数据库是否连接</p>
+<pre><code class="java"><span class="keyword">package</span> com.example.demomysql;
+
+<span class="keyword">import</span> org.springframework.beans.factory.annotation.Autowired;
+<span class="keyword">import</span> org.springframework.jdbc.core.JdbcTemplate;
+<span class="keyword">import</span> org.springframework.web.bind.annotation.RequestMapping;
+<span class="keyword">import</span> org.springframework.web.bind.annotation.RestController;
+
+<span class="keyword">import</span> java.util.ArrayList;
+<span class="meta">@RestController</span>
+<span class="meta">@RequestMapping</span>(value = <span class="string">"user"</span>)
+<span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">UserController</span> </span>{
+<span class="meta">@Autowired</span>
+<span class="keyword">private</span> JdbcTemplate jdbcTemplate;
+<span class="meta">@RequestMapping</span>(value = <span class="string">"list"</span>)
+<span class="function"><span class="keyword">public</span> Object <span class="title">list</span><span class="params">()</span> </span>{
+<span class="keyword">return</span> jdbcTemplate.queryForList(<span class="string">"select * from user"</span>);
+}
+}
+</code></pre>
+<p><img src="/2017/11/08/spring-boot-mysql/user_list.png" alt="maven"></p>
 
       
     </div>
@@ -508,7 +551,7 @@ SpringApplication.run(DemoApplication.class, args);
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#Spring-boot自述"><span class="nav-number">1.</span> <span class="nav-text">Spring boot自述</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#maven-spring-boot-IntelliJ-IDEA搭建web项目"><span class="nav-number">2.</span> <span class="nav-text">maven + spring boot + IntelliJ IDEA搭建web项目</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#简单的小demo"><span class="nav-number">3.</span> <span class="nav-text">简单的小demo</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#连接MySQL"><span class="nav-number">4.</span> <span class="nav-text">连接MySQL</span></a></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#Spring-boot自述"><span class="nav-number">1.</span> <span class="nav-text">Spring boot自述</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#maven-spring-boot-IntelliJ-IDEA搭建web项目"><span class="nav-number">2.</span> <span class="nav-text">maven + spring boot + IntelliJ IDEA搭建web项目</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#简单的小demo"><span class="nav-number">3.</span> <span class="nav-text">简单的小demo</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#使用Jdbc连接MySQL"><span class="nav-number">4.</span> <span class="nav-text">使用Jdbc连接MySQL</span></a></li></ol></div>
             
 
           </div>
