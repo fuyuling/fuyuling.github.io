@@ -83,7 +83,10 @@
 <meta property="og:image" content="http://yoursite.com/2017/11/08/spring-boot-mysql/mysql.png">
 <meta property="og:image" content="http://yoursite.com/2017/11/08/spring-boot-mysql/hello.png">
 <meta property="og:image" content="http://yoursite.com/2017/11/08/spring-boot-mysql/user_list.png">
-<meta property="og:updated_time" content="2017-11-08T08:56:26.000Z">
+<meta property="og:image" content="http://yoursite.com/2017/11/08/spring-boot-mysql/ali_ecs.png">
+<meta property="og:image" content="http://yoursite.com/2017/11/08/spring-boot-mysql/ssh_key.png">
+<meta property="og:image" content="http://yoursite.com/2017/11/08/spring-boot-mysql/ali_server.png">
+<meta property="og:updated_time" content="2017-11-10T02:46:07.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Spring boot + MySQL">
 <meta name="twitter:description" content="大学学通信,工作做前端,对后台服务器简直是一无所知. 因为对java比较熟, 所以选用简易上手的java技术栈, spring boot+mysql.关键是不需要配各种xml.spring boot的优点快速开发，特别适合构建微服务系统">
@@ -389,6 +392,12 @@ spring.datasource.initial-size=5
 }
 </code></pre>
 <p><img src="/2017/11/08/spring-boot-mysql/user_list.png" alt="maven"></p>
+<h2 id="部署到阿里云"><a href="#部署到阿里云" class="headerlink" title="部署到阿里云"></a>部署到阿里云</h2><p><img src="/2017/11/08/spring-boot-mysql/ali_ecs.png" alt="maven"><br><img src="/2017/11/08/spring-boot-mysql/ssh_key.png" alt="maven"></p>
+<p>远程登录服务器,创建实例时分配的IP</p>
+<pre><code>ssh root@47.100.7.60  -i dev/sshkey.pem
+</code></pre><p><img src="/2017/11/08/spring-boot-mysql/ali_server.png" alt="maven"></p>
+<p>登录成功后, 安装git, maven, git</p>
+<p>将本地code, 上传到服务器, 运行spring install, mvn spring-boot:run, 常驻 nohup mvn spring-boot:run</p>
 
       
     </div>
@@ -551,7 +560,7 @@ spring.datasource.initial-size=5
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#Spring-boot自述"><span class="nav-number">1.</span> <span class="nav-text">Spring boot自述</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#maven-spring-boot-IntelliJ-IDEA搭建web项目"><span class="nav-number">2.</span> <span class="nav-text">maven + spring boot + IntelliJ IDEA搭建web项目</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#简单的小demo"><span class="nav-number">3.</span> <span class="nav-text">简单的小demo</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#使用Jdbc连接MySQL"><span class="nav-number">4.</span> <span class="nav-text">使用Jdbc连接MySQL</span></a></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#Spring-boot自述"><span class="nav-number">1.</span> <span class="nav-text">Spring boot自述</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#maven-spring-boot-IntelliJ-IDEA搭建web项目"><span class="nav-number">2.</span> <span class="nav-text">maven + spring boot + IntelliJ IDEA搭建web项目</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#简单的小demo"><span class="nav-number">3.</span> <span class="nav-text">简单的小demo</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#使用Jdbc连接MySQL"><span class="nav-number">4.</span> <span class="nav-text">使用Jdbc连接MySQL</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#部署到阿里云"><span class="nav-number">5.</span> <span class="nav-text">部署到阿里云</span></a></li></ol></div>
             
 
           </div>
