@@ -85,8 +85,9 @@
 <meta property="og:image" content="http://yoursite.com/2017/11/08/spring-boot-mysql/user_list.png">
 <meta property="og:image" content="http://yoursite.com/2017/11/08/spring-boot-mysql/ali_ecs.png">
 <meta property="og:image" content="http://yoursite.com/2017/11/08/spring-boot-mysql/ssh_key.png">
+<meta property="og:image" content="http://yoursite.com/2017/11/08/spring-boot-mysql/8080.png">
 <meta property="og:image" content="http://yoursite.com/2017/11/08/spring-boot-mysql/ali_server.png">
-<meta property="og:updated_time" content="2017-11-10T02:46:07.000Z">
+<meta property="og:updated_time" content="2017-11-10T02:56:47.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Spring boot + MySQL">
 <meta name="twitter:description" content="大学学通信,工作做前端,对后台服务器简直是一无所知. 因为对java比较熟, 所以选用简易上手的java技术栈, spring boot+mysql.关键是不需要配各种xml.spring boot的优点快速开发，特别适合构建微服务系统">
@@ -186,7 +187,7 @@
             
               <i class="menu-item-icon fa fa-fw fa-home"></i> <br />
             
-            Startseite
+            Home
           </a>
         </li>
       
@@ -196,7 +197,7 @@
             
               <i class="menu-item-icon fa fa-fw fa-archive"></i> <br />
             
-            Archiv
+            Archives
           </a>
         </li>
       
@@ -260,7 +261,7 @@
                 <i class="fa fa-calendar-o"></i>
               </span>
               
-                <span class="post-meta-item-text">Veröffentlicht am</span>
+                <span class="post-meta-item-text">Posted on</span>
               
               <time title="Post created" itemprop="dateCreated datePublished" datetime="2017-11-08T10:27:38+08:00">
                 2017-11-08
@@ -393,10 +394,10 @@ spring.datasource.initial-size=5
 </code></pre>
 <p><img src="/2017/11/08/spring-boot-mysql/user_list.png" alt="maven"></p>
 <h2 id="部署到阿里云"><a href="#部署到阿里云" class="headerlink" title="部署到阿里云"></a>部署到阿里云</h2><p><img src="/2017/11/08/spring-boot-mysql/ali_ecs.png" alt="maven"><br><img src="/2017/11/08/spring-boot-mysql/ssh_key.png" alt="maven"></p>
-<p>远程登录服务器,创建实例时分配的IP</p>
+<p>ecs创建实例时, 默认没有8080端口,需要我们自己添加<br><img src="/2017/11/08/spring-boot-mysql/8080.png" alt="maven"><br>远程登录服务器,创建实例时分配的IP</p>
 <pre><code>ssh root@47.100.7.60  -i dev/sshkey.pem
 </code></pre><p><img src="/2017/11/08/spring-boot-mysql/ali_server.png" alt="maven"></p>
-<p>登录成功后, 安装git, maven, git</p>
+<p>登录成功后, 安装git, maven, jdk8</p>
 <p>将本地code, 上传到服务器, 运行spring install, mvn spring-boot:run, 常驻 nohup mvn spring-boot:run</p>
 
       
@@ -490,10 +491,10 @@ spring.datasource.initial-size=5
       
         <ul class="sidebar-nav motion-element">
           <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap" >
-            Inhaltsverzeichnis
+            Table of Contents
           </li>
           <li class="sidebar-nav-overview" data-target="site-overview">
-            Übersicht
+            Overview
           </li>
         </ul>
       
@@ -513,7 +514,7 @@ spring.datasource.initial-size=5
               <a href="/archives/">
             
                 <span class="site-state-item-count">9</span>
-                <span class="site-state-item-name">Artikel</span>
+                <span class="site-state-item-name">posts</span>
               </a>
             </div>
           
@@ -526,7 +527,7 @@ spring.datasource.initial-size=5
             <div class="site-state-item site-state-tags">
               
                 <span class="site-state-item-count">12</span>
-                <span class="site-state-item-name">Tags</span>
+                <span class="site-state-item-name">tags</span>
               
             </div>
           
@@ -593,7 +594,7 @@ spring.datasource.initial-size=5
 </div>
 
 
-  <div class="powered-by">Erstellt mit  <a class="theme-link" href="https://hexo.io">Hexo</a></div>
+  <div class="powered-by">Powered by <a class="theme-link" href="https://hexo.io">Hexo</a></div>
 
   <span class="post-meta-divider">|</span>
 
