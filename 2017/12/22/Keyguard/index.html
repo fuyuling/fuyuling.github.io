@@ -69,22 +69,22 @@
 
 
 
-<meta name="description" content="锁屏（Keyguard）是Android是一个非常重要的模块。包含的功能有：解锁（指纹、图案、PIN等）、锁屏通知显示、快速启动相机、快速拨号、显示日期/时间等。">
+<meta name="description" content="锁屏（Keyguard）是Android是一个非常重要的模块。包含的功能有：解锁（指纹、图案、PIN等）、锁屏通知显示、快速启动相机、快速拨号、显示日期/时间等。以及最近炒的很火热的face unlock, 以iphone x为代表.">
 <meta name="keywords" content="android,keyguard">
 <meta property="og:type" content="article">
 <meta property="og:title" content="Android Keyguard初识">
 <meta property="og:url" content="http://yoursite.com/2017/12/22/Keyguard/index.html">
 <meta property="og:site_name" content="Lynn&#39;s blogs">
-<meta property="og:description" content="锁屏（Keyguard）是Android是一个非常重要的模块。包含的功能有：解锁（指纹、图案、PIN等）、锁屏通知显示、快速启动相机、快速拨号、显示日期/时间等。">
+<meta property="og:description" content="锁屏（Keyguard）是Android是一个非常重要的模块。包含的功能有：解锁（指纹、图案、PIN等）、锁屏通知显示、快速启动相机、快速拨号、显示日期/时间等。以及最近炒的很火热的face unlock, 以iphone x为代表.">
 <meta property="og:locale" content="zh-CN">
 <meta property="og:image" content="http://yoursite.com/2017/12/22/Keyguard/keyguard_5.1.png">
 <meta property="og:image" content="http://yoursite.com/2017/12/22/Keyguard/systemui_5.1.png">
 <meta property="og:image" content="http://yoursite.com/2017/12/22/Keyguard/keyguard_code.png">
 <meta property="og:image" content="http://yoursite.com/2017/12/22/Keyguard/systemui_8.png">
-<meta property="og:updated_time" content="2017-12-22T09:08:56.000Z">
+<meta property="og:updated_time" content="2017-12-22T09:20:37.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Android Keyguard初识">
-<meta name="twitter:description" content="锁屏（Keyguard）是Android是一个非常重要的模块。包含的功能有：解锁（指纹、图案、PIN等）、锁屏通知显示、快速启动相机、快速拨号、显示日期/时间等。">
+<meta name="twitter:description" content="锁屏（Keyguard）是Android是一个非常重要的模块。包含的功能有：解锁（指纹、图案、PIN等）、锁屏通知显示、快速启动相机、快速拨号、显示日期/时间等。以及最近炒的很火热的face unlock, 以iphone x为代表.">
 <meta name="twitter:image" content="http://yoursite.com/2017/12/22/Keyguard/keyguard_5.1.png">
 
 
@@ -302,7 +302,7 @@
 
           
               <div class="post-description">
-                  锁屏（Keyguard）是Android是一个非常重要的模块。包含的功能有：解锁（指纹、图案、PIN等）、锁屏通知显示、快速启动相机、快速拨号、显示日期/时间等。
+                  锁屏（Keyguard）是Android是一个非常重要的模块。包含的功能有：解锁（指纹、图案、PIN等）、锁屏通知显示、快速启动相机、快速拨号、显示日期/时间等。以及最近炒的很火热的face unlock, 以iphone x为代表.
               </div>
           
 
@@ -319,8 +319,8 @@
       
 
       
-        <h2 id="Android4-4-gt-Android5-1变化最大的一版"><a href="#Android4-4-gt-Android5-1变化最大的一版" class="headerlink" title="Android4.4-&gt;Android5.1变化最大的一版"></a>Android4.4-&gt;Android5.1变化最大的一版</h2><p>   在android4.4版本之前Keyguard是个独立的apk. android5.1中将Kayguard跟SystemUI合并, 并作为SystemUI的lib.Keyguard的代码路径： \frameworks\base\packages\Keyguard<br><img src="/2017/12/22/Keyguard/keyguard_5.1.png" alt="Keyguard"><br>从Android.mk文件的描述的 include $(BUILD_STATIC_JAVA_LIBRARY)，我们知道，Keyguard并没有被编译成一个APK文件，而是被编译成了一个Java静态库。既然Keyguard被编译成静态库，那这个静态库在哪里被使用呢？<br>可以看到，Keyguard的AndroidManifest.xml有两个地方比较特殊，如下：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">android:sharedUserId=&quot;android.uid.systemui&quot;</div><div class="line">android:process=&quot;com.android.systemui&quot;</div></pre></td></tr></table></figure></p>
-<p>这两句是什么意思呢？分别是：<br>Keyguard使用了共享的用户ID是android.uid.systemui。<br>Keyguard运行在com.android.systemui进程中，而不是运行在自己的运程中。<br>通过这两行的定义，都提到了SystemUI，那我们就到SystemUI中看看有没有关于Keyguard的信息呢？我们还是先看看SystemUI工程目录下的Android.mk文件吧。<br>SystemUI的Android.mk<br><img src="/2017/12/22/Keyguard/systemui_5.1.png" alt="Keyguard"><br> SystemUI的AndroidMenifest.xml定义了很多权限、Activity、Service、Receiver相关的，在此省略掉了，我们只关心sharedUserId和process是怎样的。SystemUI的sharedUserId和process分别是android.uid.systemui、com.android.systemui，与Keyguard中定义的是一样的，而SystemUI的包名又是：com.android.systemui，从这也就说明了，SystemUI运行在自己的进程中，Keyguard也一起运行在SystemUI当前的运行进程中。</p>
+        <h2 id="Android4-4-gt-Android5-1变化最大的一版"><a href="#Android4-4-gt-Android5-1变化最大的一版" class="headerlink" title="Android4.4-&gt;Android5.1变化最大的一版"></a>Android4.4-&gt;Android5.1变化最大的一版</h2><p>   在android4.4版本之前Keyguard是个独立的apk. android5.1之后将Kayguard跟SystemUI合并, 并作为SystemUI的lib.Keyguard的代码路径： \frameworks\base\packages\Keyguard<br><img src="/2017/12/22/Keyguard/keyguard_5.1.png" alt="Keyguard"><br>从Android.mk文件的描述的 include $(BUILD_STATIC_JAVA_LIBRARY)，我们知道，Keyguard并没有被编译成一个APK文件，而是被编译成了一个Java静态库。既然Keyguard被编译成静态库，那这个静态库在哪里被使用呢？<br>可以看到，Keyguard的AndroidManifest.xml有两个地方比较特殊，如下：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">android:sharedUserId=&quot;android.uid.systemui&quot;</div><div class="line">android:process=&quot;com.android.systemui&quot;</div></pre></td></tr></table></figure></p>
+<p>这两句是什么意思呢？分别是：<br>Keyguard使用了共享的用户ID是android.uid.systemui。<br>Keyguard运行在com.android.systemui进程中，而不是运行在自己的运程中。<br>通过这两行的定义，都提到了SystemUI，那我们就到SystemUI中看看有没有关于Keyguard的信息呢？我们还是先看看SystemUI工程目录下的Android.mk文件吧。<br>SystemUI的Android.mk<br><img src="/2017/12/22/Keyguard/systemui_5.1.png" alt="Keyguard"><br>SystemUI的AndroidMenifest.xml定义了很多权限、Activity、Service、Receiver相关的，在此省略掉了，我们只关心sharedUserId和process是怎样的。SystemUI的sharedUserId和process分别是android.uid.systemui、com.android.systemui，与Keyguard中定义的是一样的，而SystemUI的包名又是：com.android.systemui，从这也就说明了，SystemUI运行在自己的进程中，Keyguard也一起运行在SystemUI当前的运行进程中。</p>
 <blockquote>
 <p>总结在5.1版本中<br>1.Keyguard被编译Java静态库。<br>2.Keyguard编译成的Java静态库在SystemUI中引入，做为SystemUI的一部分。</p>
 </blockquote>
@@ -455,7 +455,7 @@
             
             <div class="site-state-item site-state-tags">
               <a href="/tags/index.html">
-                <span class="site-state-item-count">25</span>
+                <span class="site-state-item-count">24</span>
                 <span class="site-state-item-name">标签</span>
               </a>
             </div>
