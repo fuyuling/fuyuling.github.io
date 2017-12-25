@@ -80,7 +80,9 @@
 <meta property="og:image" content="http://yoursite.com/2017/12/22/Keyguard_1/keyguard_1.png">
 <meta property="og:image" content="http://yoursite.com/2017/12/22/Keyguard_1/keyguard_2.png">
 <meta property="og:image" content="http://yoursite.com/2017/12/22/Keyguard_1/keyguard_3.png">
-<meta property="og:updated_time" content="2017-12-22T10:06:22.000Z">
+<meta property="og:image" content="http://yoursite.com/2017/12/22/Keyguard_1/keyguard_systemUI_7.0.png">
+<meta property="og:image" content="http://yoursite.com/2017/12/22/Keyguard_1/keyguard_systemUI_8.0.png">
+<meta property="og:updated_time" content="2017-12-25T09:31:57.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Android Keyguard(二) lock &amp; unlock流程">
 <meta name="twitter:description" content="通过上一篇我们了解到Keyguard会伴随着SystemUI的启动而启动，其中最重要的一个文件就是KeyguardViewMediator,这个文件负责SystemUI与Keyguard的交互，我们来看一下keyguard的整个流程。">
@@ -320,7 +322,8 @@
       
         <h2 id="show-keyguard流程"><a href="#show-keyguard流程" class="headerlink" title="show keyguard流程"></a>show keyguard流程</h2><p>show keyguard有两个触发点，一个是systemReady,意思是系统启动完成以后show keyguard。另一个是screenOff，表示灭屏，手机要灭屏进入休眠状态有两个原因：手动按Power键灭屏（WindowManagerPolicy.OFF_BECAUSE_OF_USER）和 系统自动灭屏（WindowManagerPolicy.OFF_BECAUSE_OF_TIMEOUT）。</p>
 <h3 id="systemReady加锁"><a href="#systemReady加锁" class="headerlink" title="systemReady加锁"></a>systemReady加锁</h3><p>在完成系统启动以后，WindowManagerServices成功拉起SystemUI以后，SystemUI也能正常拉起KeyguardViewMediator，执行到onSystemReady中，并通过该方法将Lock show出。<br><img src="/2017/12/22/Keyguard_1/keyguard_1.png" alt="Keyguard"><br><img src="/2017/12/22/Keyguard_1/keyguard_2.png" alt="Keyguard"><br>而showLocked()方法中通过发消息的方式将Keyguardshow出来。并在此时acquire亮屏锁，该锁为申请CPU调度时，保证单一性。<br><img src="/2017/12/22/Keyguard_1/keyguard_3.png" alt="Keyguard"><br>在处理show消息的case中，开始执行锁屏的展示动作，包含动画等操作，同样会执行SystemUI对Statubar的变化，Window type的变更。同时开始使用userActivity()来执行即时亮屏等操作。</p>
-<h3 id="sreenOff加锁"><a href="#sreenOff加锁" class="headerlink" title="sreenOff加锁"></a>sreenOff加锁</h3>
+<h3 id="sreenOff加锁"><a href="#sreenOff加锁" class="headerlink" title="sreenOff加锁"></a>sreenOff加锁</h3><h2 id="SystemUI的启动"><a href="#SystemUI的启动" class="headerlink" title="SystemUI的启动"></a>SystemUI的启动</h2><p><img src="/2017/12/22/Keyguard_1/keyguard_systemUI_7.0.png" alt="Keyguard"><br><img src="/2017/12/22/Keyguard_1/keyguard_systemUI_8.0.png" alt="Keyguard"><br>在android8.0版本中,去掉了ServiceMonitor,在systemBars.start()中直接掉起createStatusBarFromConfig();去new StatusBar.java, 这里和7.0不一样的是去掉了BaseStatusBar</p>
+
       
     </div>
     
@@ -352,8 +355,8 @@
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
-              <a href="/2017/12/22/Keyguard/" rel="next" title="Android Keyguard(一)初识">
-                <i class="fa fa-chevron-left"></i> Android Keyguard(一)初识
+              <a href="/2017/12/01/feed/" rel="next" title="feed和RSS的概念">
+                <i class="fa fa-chevron-left"></i> feed和RSS的概念
               </a>
             
           </div>
@@ -361,6 +364,10 @@
           <span class="post-nav-divider"></span>
 
           <div class="post-nav-prev post-nav-item">
+            
+              <a href="/2017/12/22/Keyguard/" rel="prev" title="Android Keyguard(一)初识">
+                Android Keyguard(一)初识 <i class="fa fa-chevron-right"></i>
+              </a>
             
           </div>
         </div>
@@ -484,7 +491,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#show-keyguard流程"><span class="nav-number">1.</span> <span class="nav-text">show keyguard流程</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#systemReady加锁"><span class="nav-number">1.1.</span> <span class="nav-text">systemReady加锁</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#sreenOff加锁"><span class="nav-number">1.2.</span> <span class="nav-text">sreenOff加锁</span></a></li></ol></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#show-keyguard流程"><span class="nav-number">1.</span> <span class="nav-text">show keyguard流程</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#systemReady加锁"><span class="nav-number">1.1.</span> <span class="nav-text">systemReady加锁</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#sreenOff加锁"><span class="nav-number">1.2.</span> <span class="nav-text">sreenOff加锁</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#SystemUI的启动"><span class="nav-number">2.</span> <span class="nav-text">SystemUI的启动</span></a></li></ol></div>
             
 
           </div>
