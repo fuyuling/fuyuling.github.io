@@ -80,16 +80,7 @@
 <meta property="og:image" content="http://yoursite.com/2017/11/08/spring-boot-mysql/maven_compile.png">
 <meta property="og:image" content="http://yoursite.com/2017/11/08/spring-boot-mysql/oschina.png">
 <meta property="og:image" content="http://yoursite.com/2017/11/08/spring-boot-mysql/setting.xml.png">
-<meta property="og:image" content="http://yoursite.com/2017/11/08/spring-boot-mysql/mysql.png">
-<meta property="og:image" content="http://yoursite.com/2017/11/08/spring-boot-mysql/hello.png">
-<meta property="og:image" content="http://yoursite.com/2017/11/08/spring-boot-mysql/user_list.png">
-<meta property="og:image" content="http://yoursite.com/2017/11/08/spring-boot-mysql/ali_ecs.png">
-<meta property="og:image" content="http://yoursite.com/2017/11/08/spring-boot-mysql/ssh_key.png">
-<meta property="og:image" content="http://yoursite.com/2017/11/08/spring-boot-mysql/8080%20.png">
-<meta property="og:image" content="http://yoursite.com/2017/11/08/spring-boot-mysql/ali_server.png">
-<meta property="og:image" content="http://yoursite.com/2017/11/08/spring-boot-mysql/rds_mysql.png">
-<meta property="og:image" content="http://yoursite.com/2017/11/08/spring-boot-mysql/white_list.png">
-<meta property="og:updated_time" content="2017-11-30T09:22:08.000Z">
+<meta property="og:updated_time" content="2018-01-03T02:31:10.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Spring boot + MySQL">
 <meta name="twitter:description" content="大学学通信,工作做前端,对后台服务器简直是一无所知. 因为对java比较熟, 所以选用简易上手的java技术栈, spring boot+mysql.关键是不需要配各种xml.spring boot的优点快速开发，特别适合构建微服务系统">
@@ -341,88 +332,8 @@
 </ul>
 <p>Spring Boot(英文中是“引导”的意思)，是用来简化Spring应用的搭建到开发的过程。应用开箱即用，只要通过 “just run”（可能是 java -jar 或 tomcat 或 maven插件run 或 shell脚本），就可以启动项目。二者，Spring Boot 只要很少的Spring配置文件（例如那些xml，property）。</p>
 <p>因为“习惯优先于配置”的原则，使得Spring Boot在快速开发应用和微服务架构实践中得到广泛应用。</p>
-<h2 id="maven-spring-boot-IntelliJ-IDEA搭建web项目"><a href="#maven-spring-boot-IntelliJ-IDEA搭建web项目" class="headerlink" title="maven + spring boot + IntelliJ IDEA搭建web项目"></a>maven + spring boot + IntelliJ IDEA搭建web项目</h2><p>启动intellij IDEA后, 按照默认步骤create new project, pom.xml报错,命令行输入mvn compile报错如下.<br><img src="/2017/11/08/spring-boot-mysql/maven_compile.png" alt="maven"><br>遇到oschina镜像连接不上<br><img src="/2017/11/08/spring-boot-mysql/oschina.png" alt="oschina"><br>修改maven的setting,添加如下<br><img src="/2017/11/08/spring-boot-mysql/setting.xml.png" alt="setting"></p>
-<pre><code class="xml"><span class="tag">&lt;<span class="name">mirror</span>&gt;</span>
-<span class="tag">&lt;<span class="name">id</span>&gt;</span>alimaven<span class="tag">&lt;/<span class="name">id</span>&gt;</span>
-<span class="tag">&lt;<span class="name">name</span>&gt;</span>aliyun maven<span class="tag">&lt;/<span class="name">name</span>&gt;</span>
-<span class="tag">&lt;<span class="name">url</span>&gt;</span>http://maven.aliyun.com/nexus/content/groups/public/<span class="tag">&lt;/<span class="name">url</span>&gt;</span>
-<span class="tag">&lt;<span class="name">mirrorOf</span>&gt;</span>central<span class="tag">&lt;/<span class="name">mirrorOf</span>&gt;</span>
-<span class="tag">&lt;/<span class="name">mirror</span>&gt;</span>
-<span class="tag">&lt;<span class="name">mirror</span>&gt;</span>
-<span class="tag">&lt;<span class="name">id</span>&gt;</span>CN<span class="tag">&lt;/<span class="name">id</span>&gt;</span>
-<span class="tag">&lt;<span class="name">name</span>&gt;</span>OSChina Central<span class="tag">&lt;/<span class="name">name</span>&gt;</span>
-<span class="tag">&lt;<span class="name">url</span>&gt;</span>http://maven.oschina.net/content/groups/public/<span class="tag">&lt;/<span class="name">url</span>&gt;</span>
-<span class="tag">&lt;<span class="name">mirrorOf</span>&gt;</span>central<span class="tag">&lt;/<span class="name">mirrorOf</span>&gt;</span>
-<span class="tag">&lt;/<span class="name">mirror</span>&gt;</span>
-<span class="tag">&lt;/<span class="name">mirrors</span>&gt;</span>
-</code></pre>
-<h2 id="简单的小demo"><a href="#简单的小demo" class="headerlink" title="简单的小demo"></a>简单的小demo</h2><p>Application很简单，一个main函数作为主入口。SpringApplication引导应用，并将Application本身作为参数传递给run方法。具体run方法会启动嵌入式的Tomcat并初始化Spring环境及其各Spring组件。</p>
-<pre><code class="java"><span class="keyword">package</span> com.example.demomysql;
-
-<span class="keyword">import</span> org.springframework.beans.factory.annotation.Autowired;
-<span class="keyword">import</span> org.springframework.jdbc.core.JdbcTemplate;
-<span class="keyword">import</span> org.springframework.stereotype.Controller;
-<span class="keyword">import</span> org.springframework.web.bind.annotation.RequestMapping;
-<span class="keyword">import</span> org.springframework.web.bind.annotation.RestController;
-
-<span class="meta">@RestController</span>
-<span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">HelloController</span> </span>{
-
-<span class="comment">/**</span>
-<span class="comment">* 配置<span class="doctag">@RequestMapping</span> 拦截 localhost:8080/springmvc/hello 请求</span>
-<span class="comment">* <span class="doctag">@return</span></span>
-<span class="comment">*/</span>
-<span class="meta">@RequestMapping</span>(<span class="string">"/hello"</span>)
-<span class="function"><span class="keyword">public</span> String <span class="title">helloWorld</span><span class="params">()</span> </span>{
-System.out.println(<span class="string">"hello world"</span>);
-<span class="keyword">return</span> <span class="string">"helloworld"</span>;
-}
-}
-</code></pre>
-<p>@RestController：提供实现了REST API，可以服务JSON,XML或者其他。这里是以String的形式渲染出结果。<br>@RequestMapping：提供路由信息，”/“路径的HTTP Request都会被映射到sayHello方法进行处理。</p>
-<h2 id="使用Jdbc连接MySQL"><a href="#使用Jdbc连接MySQL" class="headerlink" title="使用Jdbc连接MySQL"></a>使用Jdbc连接MySQL</h2><blockquote>
-<p>navicat premuim<br>此工具连接数据库，你可以从中看到各种数据库的详细信息。很方便,比命令行简便多了…</p>
-</blockquote>
-<p><img src="/2017/11/08/spring-boot-mysql/mysql.png" alt="mysql"></p>
-<p>在resource文件夹下添加application.properties配置文件并输入数据库参数，如下：</p>
-<pre><code>spring.datasource.url=jdbc:mysql://127.0.0.1:3306/user_info
-spring.datasource.username=root
-spring.datasource.password=123456
-spring.datasource.driver-class-name=com.mysql.jdbc.Driver
-spring.datasource.max-idle=10
-spring.datasource.max-wait=10000
-spring.datasource.min-idle=5
-spring.datasource.initial-size=5
-</code></pre><p><img src="/2017/11/08/spring-boot-mysql/hello.png" alt="maven"></p>
-<p>新建usercontroller类测试数据库是否连接</p>
-<pre><code class="java"><span class="keyword">package</span> com.example.demomysql;
-
-<span class="keyword">import</span> org.springframework.beans.factory.annotation.Autowired;
-<span class="keyword">import</span> org.springframework.jdbc.core.JdbcTemplate;
-<span class="keyword">import</span> org.springframework.web.bind.annotation.RequestMapping;
-<span class="keyword">import</span> org.springframework.web.bind.annotation.RestController;
-
-<span class="keyword">import</span> java.util.ArrayList;
-<span class="meta">@RestController</span>
-<span class="meta">@RequestMapping</span>(value = <span class="string">"user"</span>)
-<span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">UserController</span> </span>{
-<span class="meta">@Autowired</span>
-<span class="keyword">private</span> JdbcTemplate jdbcTemplate;
-<span class="meta">@RequestMapping</span>(value = <span class="string">"list"</span>)
-<span class="function"><span class="keyword">public</span> Object <span class="title">list</span><span class="params">()</span> </span>{
-<span class="keyword">return</span> jdbcTemplate.queryForList(<span class="string">"select * from user"</span>);
-}
-}
-</code></pre>
-<p><img src="/2017/11/08/spring-boot-mysql/user_list.png" alt="maven"></p>
-<h2 id="部署到阿里云"><a href="#部署到阿里云" class="headerlink" title="部署到阿里云"></a>部署到阿里云</h2><p><img src="/2017/11/08/spring-boot-mysql/ali_ecs.png" alt="maven"><br><img src="/2017/11/08/spring-boot-mysql/ssh_key.png" alt="maven"></p>
-<p>ecs创建实例时, 默认没有8080端口,需要我们自己添加<br><img src="/2017/11/08/spring-boot-mysql/8080 .png" alt="maven"><br>远程登录服务器,创建实例时分配的IP</p>
-<pre><code>//ssh 用户名@公网IP, sshkey.pem是之前创建ecs实例时自动生成的文件
-ssh root@47.100.7.60  -i dev/sshkey.pem
-</code></pre><p><img src="/2017/11/08/spring-boot-mysql/ali_server.png" alt="maven"></p>
-<p>登录成功后, 安装git, maven, jdk8</p>
-<p>将本地code, 上传到服务器, 运行spring install, mvn spring-boot:run, 常驻 nohup mvn spring-boot:run</p>
-<p>查看SQL是否能正常连接上<br><img src="/2017/11/08/spring-boot-mysql/rds_mysql.png" alt="maven"><br><img src="/2017/11/08/spring-boot-mysql/white_list.png" alt="maven"></p>
+<h2 id="maven-spring-boot-IntelliJ-IDEA搭建web项目"><a href="#maven-spring-boot-IntelliJ-IDEA搭建web项目" class="headerlink" title="maven + spring boot + IntelliJ IDEA搭建web项目"></a>maven + spring boot + IntelliJ IDEA搭建web项目</h2><p>启动intellij IDEA后, 按照默认步骤create new project, pom.xml报错,命令行输入mvn compile报错如下.<br><img src="/2017/11/08/spring-boot-mysql/maven_compile.png" alt="maven"><br>遇到oschina镜像连接不上<br><img src="/2017/11/08/spring-boot-mysql/oschina.png" alt="oschina"><br>修改maven的setting,添加如下<br><img src="/2017/11/08/spring-boot-mysql/setting.xml.png" alt="setting"><br><figure class="highlight xml"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div><div class="line">39</div><div class="line">40</div><div class="line">41</div><div class="line">42</div><div class="line">43</div><div class="line">44</div><div class="line">45</div><div class="line">46</div><div class="line">47</div><div class="line">48</div><div class="line">49</div><div class="line">50</div><div class="line">51</div><div class="line">52</div><div class="line">53</div><div class="line">54</div><div class="line">55</div><div class="line">56</div><div class="line">57</div><div class="line">58</div><div class="line">59</div><div class="line">60</div><div class="line">61</div><div class="line">62</div><div class="line">63</div><div class="line">64</div><div class="line">65</div><div class="line">66</div><div class="line">67</div><div class="line">68</div><div class="line">69</div><div class="line">70</div><div class="line">71</div><div class="line">72</div><div class="line">73</div><div class="line">74</div><div class="line">75</div><div class="line">76</div><div class="line">77</div><div class="line">78</div><div class="line">79</div><div class="line">80</div><div class="line">81</div><div class="line">82</div><div class="line">83</div><div class="line">84</div><div class="line">85</div><div class="line">86</div><div class="line">87</div><div class="line">88</div><div class="line">89</div><div class="line">90</div><div class="line">91</div><div class="line">92</div><div class="line">93</div><div class="line">94</div><div class="line">95</div><div class="line">96</div><div class="line">97</div><div class="line">98</div><div class="line">99</div><div class="line">100</div><div class="line">101</div><div class="line">102</div><div class="line">103</div><div class="line">104</div><div class="line">105</div><div class="line">106</div><div class="line">107</div><div class="line">108</div><div class="line">109</div><div class="line">110</div><div class="line">111</div><div class="line">112</div><div class="line">113</div><div class="line">114</div><div class="line">115</div></pre></td><td class="code"><pre><div class="line"><span class="tag">&lt;<span class="name">mirror</span>&gt;</span></div><div class="line"><span class="tag">&lt;<span class="name">id</span>&gt;</span>alimaven<span class="tag">&lt;/<span class="name">id</span>&gt;</span></div><div class="line"><span class="tag">&lt;<span class="name">name</span>&gt;</span>aliyun maven<span class="tag">&lt;/<span class="name">name</span>&gt;</span></div><div class="line"><span class="tag">&lt;<span class="name">url</span>&gt;</span>http://maven.aliyun.com/nexus/content/groups/public/<span class="tag">&lt;/<span class="name">url</span>&gt;</span></div><div class="line"><span class="tag">&lt;<span class="name">mirrorOf</span>&gt;</span>central<span class="tag">&lt;/<span class="name">mirrorOf</span>&gt;</span></div><div class="line"><span class="tag">&lt;/<span class="name">mirror</span>&gt;</span></div><div class="line"><span class="tag">&lt;<span class="name">mirror</span>&gt;</span></div><div class="line"><span class="tag">&lt;<span class="name">id</span>&gt;</span>CN<span class="tag">&lt;/<span class="name">id</span>&gt;</span></div><div class="line"><span class="tag">&lt;<span class="name">name</span>&gt;</span>OSChina Central<span class="tag">&lt;/<span class="name">name</span>&gt;</span></div><div class="line"><span class="tag">&lt;<span class="name">url</span>&gt;</span>http://maven.oschina.net/content/groups/public/<span class="tag">&lt;/<span class="name">url</span>&gt;</span></div><div class="line"><span class="tag">&lt;<span class="name">mirrorOf</span>&gt;</span>central<span class="tag">&lt;/<span class="name">mirrorOf</span>&gt;</span></div><div class="line"><span class="tag">&lt;/<span class="name">mirror</span>&gt;</span></div><div class="line"><span class="tag">&lt;/<span class="name">mirrors</span>&gt;</span></div><div class="line">``` </div><div class="line"></div><div class="line">## 简单的小demo</div><div class="line">Application很简单，一个main函数作为主入口。SpringApplication引导应用，并将Application本身作为参数传递给run方法。具体run方法会启动嵌入式的Tomcat并初始化Spring环境及其各Spring组件。</div><div class="line">```java</div><div class="line">package com.example.demomysql;</div><div class="line"></div><div class="line">import org.springframework.beans.factory.annotation.Autowired;</div><div class="line">import org.springframework.jdbc.core.JdbcTemplate;</div><div class="line">import org.springframework.stereotype.Controller;</div><div class="line">import org.springframework.web.bind.annotation.RequestMapping;</div><div class="line">import org.springframework.web.bind.annotation.RestController;</div><div class="line"></div><div class="line">@RestController</div><div class="line">public class HelloController &#123;</div><div class="line"></div><div class="line">/**</div><div class="line">* 配置@RequestMapping 拦截 localhost:8080/springmvc/hello 请求</div><div class="line">* @return</div><div class="line">*/</div><div class="line">@RequestMapping("/hello")</div><div class="line">public String helloWorld() &#123;</div><div class="line">System.out.println("hello world");</div><div class="line">return "helloworld";</div><div class="line">&#125;</div><div class="line">&#125;</div><div class="line">``` </div><div class="line"></div><div class="line">@RestController：提供实现了REST API，可以服务JSON,XML或者其他。这里是以String的形式渲染出结果。</div><div class="line">@RequestMapping：提供路由信息，”/“路径的HTTP Request都会被映射到sayHello方法进行处理。</div><div class="line"></div><div class="line">## 使用Jdbc连接MySQL</div><div class="line"></div><div class="line">&gt; navicat premuim</div><div class="line">此工具连接数据库，你可以从中看到各种数据库的详细信息。很方便,比命令行简便多了...</div><div class="line"></div><div class="line">![mysql](spring-boot-mysql/mysql.png)</div><div class="line"></div><div class="line">在resource文件夹下添加application.properties配置文件并输入数据库参数，如下：</div><div class="line">``` </div><div class="line">spring.datasource.url=jdbc:mysql://127.0.0.1:3306/user_info</div><div class="line">spring.datasource.username=root</div><div class="line">spring.datasource.password=123456</div><div class="line">spring.datasource.driver-class-name=com.mysql.jdbc.Driver</div><div class="line">spring.datasource.max-idle=10</div><div class="line">spring.datasource.max-wait=10000</div><div class="line">spring.datasource.min-idle=5</div><div class="line">spring.datasource.initial-size=5</div><div class="line">``` </div><div class="line">![maven](spring-boot-mysql/hello.png)</div><div class="line"></div><div class="line">新建usercontroller类测试数据库是否连接</div><div class="line"></div><div class="line"></div><div class="line">```java</div><div class="line">package com.example.demomysql;</div><div class="line"></div><div class="line">import org.springframework.beans.factory.annotation.Autowired;</div><div class="line">import org.springframework.jdbc.core.JdbcTemplate;</div><div class="line">import org.springframework.web.bind.annotation.RequestMapping;</div><div class="line">import org.springframework.web.bind.annotation.RestController;</div><div class="line"></div><div class="line">import java.util.ArrayList;</div><div class="line">@RestController</div><div class="line">@RequestMapping(value = "user")</div><div class="line">public class UserController &#123;</div><div class="line">@Autowired</div><div class="line">private JdbcTemplate jdbcTemplate;</div><div class="line">@RequestMapping(value = "list")</div><div class="line">public Object list() &#123;</div><div class="line">return jdbcTemplate.queryForList("select * from user");</div><div class="line">&#125;</div><div class="line">&#125;</div><div class="line"></div><div class="line">``` </div><div class="line">![maven](spring-boot-mysql/user_list.png)</div><div class="line"></div><div class="line">## 部署到阿里云</div><div class="line">![maven](spring-boot-mysql/ali_ecs.png)</div><div class="line">![maven](spring-boot-mysql/ssh_key.png)</div><div class="line"></div><div class="line">ecs创建实例时, 默认没有8080端口,需要我们自己添加</div><div class="line">![maven](spring-boot-mysql/8080 .png)</div><div class="line">远程登录服务器,创建实例时分配的IP</div><div class="line">``` </div><div class="line">//ssh 用户名@公网IP, sshkey.pem是之前创建ecs实例时自动生成的文件</div><div class="line">ssh root@47.100.7.60  -i dev/sshkey.pem </div><div class="line">``` </div><div class="line">![maven](spring-boot-mysql/ali_server.png)</div><div class="line"></div><div class="line">登录成功后, 安装git, maven, jdk8</div><div class="line"></div><div class="line"></div><div class="line">将本地code, 上传到服务器, 运行spring install, mvn spring-boot:run, 常驻 nohup mvn spring-boot:run</div><div class="line"></div><div class="line"></div><div class="line">查看SQL是否能正常连接上</div><div class="line">![maven](spring-boot-mysql/rds_mysql.png)</div><div class="line">![maven](spring-boot-mysql/white_list.png)</div><div class="line"></div><div class="line">当遇到端口被占用</div><div class="line">![maven](spring-boot-mysql/kill_8080.png)</div></pre></td></tr></table></figure></p>
+<p>kill pid<br>```</p>
 
       
     </div>
@@ -603,7 +514,7 @@ ssh root@47.100.7.60  -i dev/sshkey.pem
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#Spring-boot自述"><span class="nav-number">1.</span> <span class="nav-text">Spring boot自述</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#maven-spring-boot-IntelliJ-IDEA搭建web项目"><span class="nav-number">2.</span> <span class="nav-text">maven + spring boot + IntelliJ IDEA搭建web项目</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#简单的小demo"><span class="nav-number">3.</span> <span class="nav-text">简单的小demo</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#使用Jdbc连接MySQL"><span class="nav-number">4.</span> <span class="nav-text">使用Jdbc连接MySQL</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#部署到阿里云"><span class="nav-number">5.</span> <span class="nav-text">部署到阿里云</span></a></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#Spring-boot自述"><span class="nav-number">1.</span> <span class="nav-text">Spring boot自述</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#maven-spring-boot-IntelliJ-IDEA搭建web项目"><span class="nav-number">2.</span> <span class="nav-text">maven + spring boot + IntelliJ IDEA搭建web项目</span></a></li></ol></div>
             
 
           </div>
@@ -626,7 +537,7 @@ ssh root@47.100.7.60  -i dev/sshkey.pem
         <div class="copyright" >
   
   &copy; 
-  <span itemprop="copyrightYear">2017</span>
+  <span itemprop="copyrightYear">2018</span>
   <span class="with-love">
     <i class="fa fa-heart"></i>
   </span>
