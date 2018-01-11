@@ -309,10 +309,14 @@
 
       
         
-          
-            <h2 id="设置锁屏方式的入口"><a href="#设置锁屏方式的入口" class="headerlink" title="设置锁屏方式的入口"></a>设置锁屏方式的入口</h2><p><img src="/2018/01/10/Keyguard-2/keyguard_setting_entry.png" alt="Keyguard"><br><img src="/2018/01/10/Keyguard-2/keyguard_setting_generic.png" alt="Keyguard" title="ChooseLockGeneric.java"><br>锁屏的入口 ChooseLockGeneric.java, 锁屏的方式有三种, Pattern(对应的是ChooseLockPattern.java), Password和Pin(对应的是ChooseLockPassword.java)<br><img src="/2018/01/10/Keyguard-2/keyguard_setting_password.png" alt="Keyguard" title="ChooseLockPassword.java"><br>可以看到一个保存锁屏密码的工具类LockPathernUtils.java(/frameworks/base/core/java/com/android/internal/widget/LockPatternUtils.java).该类定义了锁屏密码的格式等等.</p>
-
-          
+          系统在加载keyguard的时候需要先判断当前系统中是否有锁屏方式，那么锁屏方式又是如何保存的了？
+          <!--noindex-->
+          <div class="post-button text-center">
+            <a class="btn" href="/2018/01/10/Keyguard-2/">
+              阅读全文 &raquo;
+            </a>
+          </div>
+          <!--/noindex-->
         
       
     </div>
