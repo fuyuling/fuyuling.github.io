@@ -53,7 +53,7 @@
 <link href="/css/main.css?v=5.1.2" rel="stylesheet" type="text/css" />
 
 
-  <meta name="keywords" content="Hexo, NexT" />
+  <meta name="keywords" content="android,Blinkfeed," />
 
 
 
@@ -69,18 +69,19 @@
 
 
 
-<meta name="description" content="facebook app中的login-inApp调用fb的登陆可见fb官方文档 Android 版 Facebook 登录 — 快速入门注意: facebook登陆成功后, 会调用com.account.AccountManager去addAccount, 这时可以再setting-&amp;gt;Account &amp;amp; Sync看到fb account同步success. ##Blinkfeed-">
+<meta name="description" content="最近遇到一条issue, facebook在注册后,无法sync到device account, 很是头大, 花了蛮多时间研究正确的流程是什么样子">
+<meta name="keywords" content="android,Blinkfeed">
 <meta property="og:type" content="article">
 <meta property="og:title" content="Blinkfeed之Facebook login-in">
 <meta property="og:url" content="http://yoursite.com/2018/01/23/Blinkfeed之Facebook-login-in/index.html">
 <meta property="og:site_name" content="Lynn&#39;s blogs">
-<meta property="og:description" content="facebook app中的login-inApp调用fb的登陆可见fb官方文档 Android 版 Facebook 登录 — 快速入门注意: facebook登陆成功后, 会调用com.account.AccountManager去addAccount, 这时可以再setting-&amp;gt;Account &amp;amp; Sync看到fb account同步success. ##Blinkfeed-">
+<meta property="og:description" content="最近遇到一条issue, facebook在注册后,无法sync到device account, 很是头大, 花了蛮多时间研究正确的流程是什么样子">
 <meta property="og:locale" content="zh-CN">
 <meta property="og:image" content="http://yoursite.com/2018/01/23/Blinkfeed之Facebook-login-in/login-in.png">
-<meta property="og:updated_time" content="2018-01-23T08:40:33.000Z">
+<meta property="og:updated_time" content="2018-01-23T08:50:11.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Blinkfeed之Facebook login-in">
-<meta name="twitter:description" content="facebook app中的login-inApp调用fb的登陆可见fb官方文档 Android 版 Facebook 登录 — 快速入门注意: facebook登陆成功后, 会调用com.account.AccountManager去addAccount, 这时可以再setting-&amp;gt;Account &amp;amp; Sync看到fb account同步success. ##Blinkfeed-">
+<meta name="twitter:description" content="最近遇到一条issue, facebook在注册后,无法sync到device account, 很是头大, 花了蛮多时间研究正确的流程是什么样子">
 <meta name="twitter:image" content="http://yoursite.com/2018/01/23/Blinkfeed之Facebook-login-in/login-in.png">
 
 
@@ -297,6 +298,10 @@
           
 
           
+              <div class="post-description">
+                  最近遇到一条issue, facebook在注册后,无法sync到device account, 很是头大, 花了蛮多时间研究正确的流程是什么样子
+              </div>
+          
 
         </div>
       </header>
@@ -311,8 +316,12 @@
       
 
       
-        <h2 id="facebook-app中的login-in"><a href="#facebook-app中的login-in" class="headerlink" title="facebook app中的login-in"></a>facebook app中的login-in</h2><p>App调用fb的登陆可见fb官方文档 <a href="https://developers.facebook.com/docs/facebook-login/android" target="_blank" rel="external">Android 版 Facebook 登录 — 快速入门</a><br>注意: facebook登陆成功后, 会调用com.account.AccountManager去addAccount, 这时可以再setting-&gt;Account &amp; Sync看到fb account同步success.</p>
-<p>##Blinkfeed-&gt;addContent check fb<br><img src="/2018/01/23/Blinkfeed之Facebook-login-in/login-in.png" alt="Blinkfeed" title="facebook 登陆流程"><br>facebook登陆的LoginManager注册回调等具体实现在SingleSignOnActivity.java, 登录成功后, LoginResult参数将拥有新的 AccessToken 及最新授予或拒绝的权限。并start SingleSignOnService sync account.<br>备注: facebook在注册的case下, sync account流程会失败, AccountManager.getAccount返回length 0, 是因为facebook在注册成功之后,没有向AccountManager addAccount, 导致sync失败.</p>
+        <h2 id="原生app-login-in"><a href="#原生app-login-in" class="headerlink" title="原生app login-in"></a>原生app login-in</h2><p>App调用fb的登陆可见fb官方文档 <a href="https://developers.facebook.com/docs/facebook-login/android" target="_blank" rel="external">Android 版 Facebook 登录 — 快速入门</a><br>注意: facebook登陆成功后, 会调用<code>com.account.AccountManager</code>去addAccount, 这时可以再setting-&gt;Account &amp; Sync看到fb account同步success.</p>
+<h2 id="Blinkfeed-gt-addContent-login-in"><a href="#Blinkfeed-gt-addContent-login-in" class="headerlink" title="Blinkfeed-&gt;addContent login-in"></a>Blinkfeed-&gt;addContent login-in</h2><p><img src="/2018/01/23/Blinkfeed之Facebook-login-in/login-in.png" alt="Blinkfeed" title="facebook 登陆流程"><br>facebook登陆的<code>LoginManager</code>注册回调等具体实现在<code>SingleSignOnActivity.java</code>, 登录成功后, LoginResult参数将拥有新的 AccessToken 及最新授予或拒绝的权限。并start <code>SingleSignOnService</code> sync account.<br>备注:   </p>
+<ul>
+<li>facebook在注册的case下, sync account流程会失败, AccountManager.getAccount返回length 0, 是因为facebook在注册成功之后,没有向AccountManager addAccount, 导致sync失败.  </li>
+<li>handleAddAccount, 并不会updateTextAndCheckBox, 二次勾选才会check上.</li>
+</ul>
 
       
     </div>
@@ -327,6 +336,14 @@
     
 
     <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/android/" rel="tag"># android</a>
+          
+            <a href="/tags/Blinkfeed/" rel="tag"># Blinkfeed</a>
+          
+        </div>
       
 
       
@@ -434,7 +451,7 @@
             
             <div class="site-state-item site-state-tags">
               <a href="/tags/index.html">
-                <span class="site-state-item-count">25</span>
+                <span class="site-state-item-count">26</span>
                 <span class="site-state-item-name">标签</span>
               </a>
             </div>
@@ -469,7 +486,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#facebook-app中的login-in"><span class="nav-number">1.</span> <span class="nav-text">facebook app中的login-in</span></a></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#原生app-login-in"><span class="nav-number">1.</span> <span class="nav-text">原生app login-in</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Blinkfeed-gt-addContent-login-in"><span class="nav-number">2.</span> <span class="nav-text">Blinkfeed->addContent login-in</span></a></li></ol></div>
             
 
           </div>

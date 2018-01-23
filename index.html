@@ -309,11 +309,14 @@
 
       
         
-          
-            <h2 id="facebook-app中的login-in"><a href="#facebook-app中的login-in" class="headerlink" title="facebook app中的login-in"></a>facebook app中的login-in</h2><p>App调用fb的登陆可见fb官方文档 <a href="https://developers.facebook.com/docs/facebook-login/android" target="_blank" rel="external">Android 版 Facebook 登录 — 快速入门</a><br>注意: facebook登陆成功后, 会调用com.account.AccountManager去addAccount, 这时可以再setting-&gt;Account &amp; Sync看到fb account同步success.</p>
-<p>##Blinkfeed-&gt;addContent check fb<br><img src="/2018/01/23/Blinkfeed之Facebook-login-in/login-in.png" alt="Blinkfeed" title="facebook 登陆流程"><br>facebook登陆的LoginManager注册回调等具体实现在SingleSignOnActivity.java, 登录成功后, LoginResult参数将拥有新的 AccessToken 及最新授予或拒绝的权限。并start SingleSignOnService sync account.<br>备注: facebook在注册的case下, sync account流程会失败, AccountManager.getAccount返回length 0, 是因为facebook在注册成功之后,没有向AccountManager addAccount, 导致sync失败.</p>
-
-          
+          最近遇到一条issue, facebook在注册后,无法sync到device account, 很是头大, 花了蛮多时间研究正确的流程是什么样子
+          <!--noindex-->
+          <div class="post-button text-center">
+            <a class="btn" href="/2018/01/23/Blinkfeed之Facebook-login-in/">
+              阅读全文 &raquo;
+            </a>
+          </div>
+          <!--/noindex-->
         
       
     </div>
@@ -1531,7 +1534,7 @@
             
             <div class="site-state-item site-state-tags">
               <a href="/tags/index.html">
-                <span class="site-state-item-count">25</span>
+                <span class="site-state-item-count">26</span>
                 <span class="site-state-item-name">标签</span>
               </a>
             </div>
