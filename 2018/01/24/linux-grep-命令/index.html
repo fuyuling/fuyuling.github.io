@@ -53,7 +53,7 @@
 <link href="/css/main.css?v=5.1.2" rel="stylesheet" type="text/css" />
 
 
-  <meta name="keywords" content="hexo," />
+  <meta name="keywords" content="grep," />
 
 
 
@@ -69,22 +69,18 @@
 
 
 
-<meta name="description" content="提交代码到gitHub 的时候遇到“fatal:multiple stage entries for merged file” 提示">
-<meta name="keywords" content="hexo">
+<meta name="description" content="grep（global search regular expression(RE) and print out the line，全面搜索正则表达式并把行打印出来）是一种强大的文本搜索工具，它能使用正则表达式搜索文本，并把匹配的行打印出来。">
+<meta name="keywords" content="grep">
 <meta property="og:type" content="article">
-<meta property="og:title" content="hexo提交时遇到error的处理">
-<meta property="og:url" content="http://yoursite.com/2018/01/10/hexo_error/index.html">
+<meta property="og:title" content="linux grep 命令">
+<meta property="og:url" content="http://yoursite.com/2018/01/24/linux-grep-命令/index.html">
 <meta property="og:site_name" content="Lynn&#39;s blogs">
-<meta property="og:description" content="提交代码到gitHub 的时候遇到“fatal:multiple stage entries for merged file” 提示">
+<meta property="og:description" content="grep（global search regular expression(RE) and print out the line，全面搜索正则表达式并把行打印出来）是一种强大的文本搜索工具，它能使用正则表达式搜索文本，并把匹配的行打印出来。">
 <meta property="og:locale" content="zh-CN">
-<meta property="og:image" content="http://yoursite.com/2018/01/10/hexo_error/hexo_d_error.png">
-<meta property="og:image" content="http://yoursite.com/2018/01/10/hexo_error/hexo_deploy_git.png">
-<meta property="og:image" content="http://yoursite.com/2018/01/10/hexo_error/hexo_d_error_fix.png">
-<meta property="og:updated_time" content="2018-01-11T07:13:30.000Z">
+<meta property="og:updated_time" content="2018-01-24T07:37:59.000Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="hexo提交时遇到error的处理">
-<meta name="twitter:description" content="提交代码到gitHub 的时候遇到“fatal:multiple stage entries for merged file” 提示">
-<meta name="twitter:image" content="http://yoursite.com/2018/01/10/hexo_error/hexo_d_error.png">
+<meta name="twitter:title" content="linux grep 命令">
+<meta name="twitter:description" content="grep（global search regular expression(RE) and print out the line，全面搜索正则表达式并把行打印出来）是一种强大的文本搜索工具，它能使用正则表达式搜索文本，并把匹配的行打印出来。">
 
 
 
@@ -114,13 +110,13 @@
 
 
 
-  <link rel="canonical" href="http://yoursite.com/2018/01/10/hexo_error/"/>
+  <link rel="canonical" href="http://yoursite.com/2018/01/24/linux-grep-命令/"/>
 
 
 
 
 
-  <title>hexo提交时遇到error的处理 | Lynn's blogs</title>
+  <title>linux grep 命令 | Lynn's blogs</title>
   
 
 
@@ -247,7 +243,7 @@
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2018/01/10/hexo_error/">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2018/01/24/linux-grep-命令/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="Lynn Fu">
@@ -264,7 +260,7 @@
 
         
         
-          <h1 class="post-title" itemprop="name headline">hexo提交时遇到error的处理</h1>
+          <h1 class="post-title" itemprop="name headline">linux grep 命令</h1>
         
 
         <div class="post-meta">
@@ -276,8 +272,8 @@
               
                 <span class="post-meta-item-text">发表于</span>
               
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2018-01-10T11:30:15+08:00">
-                2018-01-10
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2018-01-24T15:03:09+08:00">
+                2018-01-24
               </time>
             
 
@@ -301,7 +297,7 @@
 
           
               <div class="post-description">
-                  提交代码到gitHub 的时候遇到“fatal:multiple stage entries for merged file” 提示
+                  grep（global search regular expression(RE) and print out the line，全面搜索正则表达式并把行打印出来）是一种强大的文本搜索工具，它能使用正则表达式搜索文本，并把匹配的行打印出来。
               </div>
           
 
@@ -318,9 +314,26 @@
       
 
       
-        <p>提交代码到gitHub 的时候经常会遇到“fatal:multiple stage entries for merged file” 提示，git status或者git add. 都无济于事。正确的处理姿势如下.<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">rm .git/index  </div><div class="line">git add -A    </div><div class="line">git commit</div></pre></td></tr></table></figure></p>
-<p>同理, 通过 <strong>hexo d</strong> 提交到github, 遇到同样的错误, 需要了解hexo是通过什么方式将resource提交到github的.<br><img src="/2018/01/10/hexo_error/hexo_d_error.png" alt="hexo d"><br>从上图的错误提示可以知道, hexo d将仓库建在.deploy_git路径下, 该目录下的resource和/hexo/public完全一致<br><img src="/2018/01/10/hexo_error/hexo_deploy_git.png" alt="hexo d"><br>cd 到该目录下, 和普通处理git的方式一样<br><img src="/2018/01/10/hexo_error/hexo_d_error_fix.png" alt="hexo d"></p>
-<p>收工!</p>
+        <h2 id="grep命令常见用法"><a href="#grep命令常见用法" class="headerlink" title="grep命令常见用法"></a>grep命令常见用法</h2><p>在文件中搜索一个单词, 命令会返回一个包含”match_pattern”的问本行<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">grep match_pattern file_name</div><div class="line">grep &apos;match_pattern&apos; file_name</div><div class="line">grep &quot;match_pattern&quot; file_name</div></pre></td></tr></table></figure></p>
+<p>在多个文件中查找<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">grep match_pattern file_1 file_2 file_3</div></pre></td></tr></table></figure></p>
+<p>输出除match_pattern之外的所有行内容 -v<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">grep -v match_pattern file_name</div></pre></td></tr></table></figure></p>
+<p>忽略匹配样式中的字符大小写<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">grep -i match_pattern</div></pre></td></tr></table></figure></p>
+<p>多个样式匹配 -E<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">grep -E &apos;match_pattern_1|match_pattern_2&apos;</div><div class="line">grep -E &quot;match_pattern_1|match_pattern_2&quot;</div><div class="line">grep -e match_pattern_1 -e match_pattern_2</div></pre></td></tr></table></figure></p>
+<p>标记匹配颜色 ###–color=auto###<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">grep match_pattern file_name --color=auto</div></pre></td></tr></table></figure></p>
+<p>如何修改颜色呢?关于color的官方文档说明如下:<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">--color[=WHEN], --colour[=WHEN]</div><div class="line">Surround  the  matched  (non-empty) strings, matching lines, context lines, file names, line numbers,   byte offsets, and separators (for fields and groups of context lines) with escape sequences to display   them  in color  on  the  terminal.  The colors are defined by the environment variable GREP_COLORS.  The deprecated environment variable GREP_COLOR is still supported, but its setting  does  not  have   priority.   WHEN  is never, always, or auto.</div></pre></td></tr></table></figure></p>
+<p>环境变量GREP_COLOR参数如下</p>
+<ul>
+<li>30    black</li>
+<li>31    red</li>
+<li>32    green</li>
+<li>33    yellow</li>
+<li>34    blue</li>
+<li>35    purple</li>
+<li>36    cyan</li>
+<li>37    white</li>
+</ul>
+<p>因此, .bashrc中添加<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">export GREP_OPTIONS=&apos;--color=auto&apos;</div><div class="line">export GREP_COLOR =&apos;1;32&apos;</div></pre></td></tr></table></figure></p>
+<h2 id="选项"><a href="#选项" class="headerlink" title="选项"></a>选项</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div></pre></td><td class="code"><pre><div class="line">-a 不要忽略二进制数据。</div><div class="line">-A&lt;显示列数&gt; 除了显示符合范本样式的那一行之外，并显示该行之后的内容。</div><div class="line">-b 在显示符合范本样式的那一行之外，并显示该行之前的内容。</div><div class="line">-c 计算符合范本样式的列数。</div><div class="line">-C&lt;显示列数&gt;或-&lt;显示列数&gt;  除了显示符合范本样式的那一列之外，并显示该列之前后的内容。</div><div class="line">-d&lt;进行动作&gt; 当指定要查找的是目录而非文件时，必须使用这项参数，否则grep命令将回报信息并停止动作。</div><div class="line">-e&lt;范本样式&gt; 指定字符串作为查找文件内容的范本样式。</div><div class="line">-E 将范本样式为延伸的普通表示法来使用，意味着使用能使用扩展正则表达式。</div><div class="line">-f&lt;范本文件&gt; 指定范本文件，其内容有一个或多个范本样式，让grep查找符合范本条件的文件内容，格式为每一列的范本样式。</div><div class="line">-F 将范本样式视为固定字符串的列表。</div><div class="line">-G 将范本样式视为普通的表示法来使用。</div><div class="line">-h 在显示符合范本样式的那一列之前，不标示该列所属的文件名称。</div><div class="line">-H 在显示符合范本样式的那一列之前，标示该列的文件名称。</div><div class="line">-i 忽略字符大小写的差别。</div><div class="line">-l 列出文件内容符合指定的范本样式的文件名称。</div><div class="line">-L 列出文件内容不符合指定的范本样式的文件名称。</div><div class="line">-n 在显示符合范本样式的那一列之前，标示出该列的编号。</div><div class="line">-q 不显示任何信息。</div><div class="line">-R/-r 此参数的效果和指定“-d recurse”参数相同。</div><div class="line">-s 不显示错误信息。</div><div class="line">-v 反转查找。</div><div class="line">-w 只显示全字符合的列。</div><div class="line">-x 只显示全列符合的列。</div><div class="line">-y 此参数效果跟“-i”相同。</div><div class="line">-o 只输出文件中匹配到的部分。</div></pre></td></tr></table></figure>
 
       
     </div>
@@ -338,7 +351,7 @@
       
         <div class="post-tags">
           
-            <a href="/tags/hexo/" rel="tag"># hexo</a>
+            <a href="/tags/grep/" rel="tag"># grep</a>
           
         </div>
       
@@ -351,8 +364,8 @@
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
-              <a href="/2017/12/28/Keyguard_1/" rel="next" title="Android Keyguard(二) lock & unlock流程">
-                <i class="fa fa-chevron-left"></i> Android Keyguard(二) lock & unlock流程
+              <a href="/2018/01/23/Blinkfeed-1/" rel="next" title="Blinkfeed(一)之Facebook login-in">
+                <i class="fa fa-chevron-left"></i> Blinkfeed(一)之Facebook login-in
               </a>
             
           </div>
@@ -360,10 +373,6 @@
           <span class="post-nav-divider"></span>
 
           <div class="post-nav-prev post-nav-item">
-            
-              <a href="/2018/01/10/Keyguard-2/" rel="prev" title="Android Keyguard(三) 锁屏设置">
-                Android Keyguard(三) 锁屏设置 <i class="fa fa-chevron-right"></i>
-              </a>
             
           </div>
         </div>
@@ -415,8 +424,17 @@
       
 
       
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap" >
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview">
+            站点概览
+          </li>
+        </ul>
+      
 
-      <section class="site-overview sidebar-panel sidebar-panel-active">
+      <section class="site-overview sidebar-panel">
         <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
           
             <p class="site-author-name" itemprop="name">Lynn Fu</p>
@@ -468,6 +486,22 @@
 
       </section>
 
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#grep命令常见用法"><span class="nav-number">1.</span> <span class="nav-text">grep命令常见用法</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#选项"><span class="nav-number">2.</span> <span class="nav-text">选项</span></a></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
       
 
       
