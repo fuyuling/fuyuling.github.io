@@ -313,28 +313,92 @@
             <div id="sequence-0"></div>
 
 
-<h2 id="server-API"><a href="#server-API" class="headerlink" title="server API"></a>server API</h2><p>getQuestion(String topic, int year)</p>
+
+
+
+<h2 id="server-API"><a href="#server-API" class="headerlink" title="server API"></a>server API</h2><p><code>getQuestion(String topic, int year, int id)</code></p>
 <table>
 <thead>
 <tr>
-<th>参数</th>
-<th>描述</th>
+<th>参数名</th>
+<th>类型</th>
+<th>必填</th>
+<th>说明</th>
 </tr>
 </thead>
 <tbody>
 <tr>
-<td>string topic</td>
+<td>id</td>
+<td>int</td>
+<td>是</td>
+<td>序号</td>
+</tr>
+<tr>
+<td> topic</td>
+<td>string</td>
+<td>是</td>
 <td>科目名称</td>
 </tr>
 <tr>
-<td>int year</td>
+<td> year</td>
+<td>int</td>
+<td>是</td>
 <td>题集年份</td>
 </tr>
 </tbody>
 </table>
-<p><script src="https://cdnjs.cloudflare.com/ajax/libs/webfont/1.6.27/webfontloader.js"></script><script src="https://cdnjs.cloudflare.com/ajax/libs/snap.svg/0.4.1/snap.svg-min.js"></script><script src="https://cdnjs.cloudflare.com/ajax/libs/underscore.js/1.8.3/underscore-min.js"></script><script src="https://cdnjs.cloudflare.com/ajax/libs/js-sequence-diagrams/1.0.6/sequence-diagram-min.js"></script><textarea id="sequence-0-code" style="display: none">Client->Server: getQuestion(int year, string topic)?
+<p><code>getTopic(String topic, int year, int id)</code></p>
+<table>
+<thead>
+<tr>
+<th>参数名</th>
+<th>类型</th>
+<th>必填</th>
+<th>说明</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td> topic</td>
+<td>string</td>
+<td>是</td>
+<td>科目名称</td>
+</tr>
+<tr>
+<td> year</td>
+<td>int</td>
+<td>是</td>
+<td>题集年份</td>
+</tr>
+</tbody>
+</table>
+<p><code>getResult(String topic, int year, int id)</code></p>
+<table>
+<thead>
+<tr>
+<th>参数名</th>
+<th>类型</th>
+<th>必填</th>
+<th>说明</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td> topic</td>
+<td>string</td>
+<td>是</td>
+<td>科目名称</td>
+</tr>
+<tr>
+<td> year</td>
+<td>int</td>
+<td>是</td>
+<td>题集年份<script src="https://cdnjs.cloudflare.com/ajax/libs/webfont/1.6.27/webfontloader.js"></script><script src="https://cdnjs.cloudflare.com/ajax/libs/snap.svg/0.4.1/snap.svg-min.js"></script><script src="https://cdnjs.cloudflare.com/ajax/libs/underscore.js/1.8.3/underscore-min.js"></script><script src="https://cdnjs.cloudflare.com/ajax/libs/js-sequence-diagrams/1.0.6/sequence-diagram-min.js"></script><textarea id="sequence-0-code" style="display: none">Client->Server: getQuestion(int year, string topic)?
 Note right of Server: search DB
-Server-->Client: response Result!</textarea><textarea id="sequence-0-options" style="display: none">{"theme":"simple","scale":1,"line-width":2,"line-length":50,"text-margin":10,"font-size":12}</textarea><script>  var code = document.getElementById("sequence-0-code").value;  var options = JSON.parse(decodeURIComponent(document.getElementById("sequence-0-options").value));  var diagram = Diagram.parse(code);  diagram.drawSVG("sequence-0", options);</script></p>
+Server-->Client: response Result!</textarea><textarea id="sequence-0-options" style="display: none">{"scale":1,"line-width":2,"line-length":50,"text-margin":10,"font-size":12,"theme":"simple"}</textarea><script>  var code = document.getElementById("sequence-0-code").value;  var options = JSON.parse(decodeURIComponent(document.getElementById("sequence-0-options").value));  var diagram = Diagram.parse(code);  diagram.drawSVG("sequence-0", options);</script></td>
+</tr>
+</tbody>
+</table>
 
           
         
@@ -1394,7 +1458,7 @@ Server-->Client: response Result!</textarea><textarea id="sequence-0-options" st
         
           <h1 class="post-title" itemprop="name headline">
                 
-                <a class="post-title-link" href="/2017/11/08/spring-boot-mysql/" itemprop="url">Spring boot + MySQL</a></h1>
+                <a class="post-title-link" href="/2017/11/08/spring-boot-mysql/" itemprop="url">Spring boot之HelloWord</a></h1>
         
 
         <div class="post-meta">
@@ -1548,7 +1612,7 @@ Server-->Client: response Result!</textarea><textarea id="sequence-0-options" st
             
             <div class="site-state-item site-state-tags">
               <a href="/tags/index.html">
-                <span class="site-state-item-count">28</span>
+                <span class="site-state-item-count">27</span>
                 <span class="site-state-item-name">标签</span>
               </a>
             </div>
